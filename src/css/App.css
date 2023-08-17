@@ -1,0 +1,61 @@
+@font-face {
+    font-family: 'Microsoft Sans Serif';
+    src: 
+      url('/src/assets/fonts/MicrosoftSansSerif.woff2') format('woff2'),
+      url('/src/assets/fonts/MicrosoftSansSerif.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Microsoft Sans Serif';
+    src: 
+      url('/src/assets/fonts/MicrosoftSansSerifBold.woff2') format('woff2'),
+      url('/src/assets/fonts/MicrosoftSansSerifBold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Microsoft Sans Serif', sans-serif;
+
+  --border-main-color: rgb(201, 201, 201);
+  --border-dark-color: gray;
+  --header-active: rgb(16, 16, 163);
+
+  --outset: 
+  inset -1px -1px var(--border-dark-color), -1px -1px white, -1px 0 white, 0 -1px white, 1px 1px black, -1px 1px black, 1px -1px black;
+  
+  --light-inset:
+  -1px -1px var(--border-dark-color), -1px 0 var(--border-dark-color), 0 -1px var(--border-dark-color), 1px 1px white, -1px 1px white, 1px -1px white;
+
+  --inset: 
+  inset 0 -1px var(--border-main-color),
+  inset -1px 0 var(--border-main-color),
+  inset 1px 1px black, 
+  inset -1px -1px var(--border-main-color), 
+  -1px -1px var(--border-dark-color),
+  -1px 0 var(--border-dark-color),
+  0 -1px var(--border-dark-color),
+  1px 1px white,
+  -1px 1px white,
+  1px -1px white;
+}
+
+button {
+  border: none;
+  border-radius: none;
+}
+
+#app {
+  min-width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-image: url(/src/assets/windows-xp-background.jpg);
+}

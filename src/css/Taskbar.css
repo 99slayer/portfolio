@@ -1,0 +1,31 @@
+#taskbar {
+  margin-top: auto;
+  padding: 5px 4px 4px 4px;
+  min-width: 100vw;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  border-top: 1px solid white;
+  background-color: var(--border-main-color);
+  box-shadow: 0px -1px var(--border-main-color);
+}
+
+#start-btn {
+  padding: 0;
+  width: 27px;
+}
+
+.taskbar-btn {
+  padding: 2px 40px 2px 40px;
+  box-shadow: var(--outset);
+}
+
+.taskbar-btn:active {
+  box-shadow: var(--inset);
+}
+
+#time {
+  margin-left: auto;
+  padding: 2px;
+  box-shadow: var(--light-inset);
+}

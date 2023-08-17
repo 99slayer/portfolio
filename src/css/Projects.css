@@ -1,0 +1,118 @@
+#projects {
+  margin: 20px;
+  min-width: 230px;
+  max-width: 700px;
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--border-main-color);
+  border-top: 1px solid white;
+  border-right: 1px solid var(--border-dark-color);
+  border-bottom: 1px solid var(--border-dark-color);
+  border-left: 1px solid white;
+  box-shadow: -1px -1px var(--border-main-color), -1px 0px var(--border-main-color), 0px -1px var(--border-main-color), 1px 1px black, -1px 1px black, 1px -1px black;
+}
+
+#upper-header {
+  padding: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--header-active);
+}
+
+#heading-cont {
+  position: relative;
+}
+
+#header-icon {
+  position: absolute;
+  top: -13px;
+  left: -2px;
+  width: 22px;
+  height: 22px;
+  color: white;
+}
+
+#folder-name {
+  position: absolute;
+  top: -17px;
+  left: 28px;
+  font-size: 0.9em;
+  font-weight: 900;
+  color: white;
+}
+
+#window-btns {
+  display: flex;
+  gap: 4px;
+}
+
+.window-btn {
+  padding-right: 2px;
+  padding-left: 1px;
+  padding-bottom: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: var(--outset);
+}
+
+.window-btn:active {
+  box-shadow: var(--light-inset);
+}
+
+#folder-btns {
+  padding: 4px 0 4px 8px;
+  display: flex;
+  gap: 16px;
+  background-color: var(--border-main-color);
+}
+
+.folder-btn {
+  border: none;
+  font-size: 0.8em;
+  background-color: var(--border-main-color);
+}
+
+#file-icons {
+  padding: 2px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 80px);
+  background-color: white;
+  box-shadow: var(--inset);
+}
+
+.file {
+  padding: 6px 9px 9px 9px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.8em;
+  background-color: white;
+}
+
+.file img {
+  width: 32px;
+  height: auto;
+}
+
+#folder-footer {
+  margin-top: 5px;
+  display: flex;
+  gap: 4px;
+  font-size: 0.8em;
+  background-color: var(--border-main-color);
+}
+
+.footer-object {
+  min-width: 120px;
+  padding: 2px 0px 1px 4px;
+  box-shadow: var(--light-inset);
+}
+
+#folder-footer div:last-child {
+  flex: 1;
+}
