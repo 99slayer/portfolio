@@ -1,0 +1,125 @@
+.file-template {
+  position: absolute;
+  top: 40px;
+  left: 40px;
+  display: none;
+  flex-direction: column;
+  align-items: stretch;
+  width: 400px;
+  height: 600px;
+  padding: 4px 4px 2px 4px;
+  background-color: var(--border-main-color);
+  box-shadow: var(--outset);
+}
+
+.file-header {
+  padding: 4px;
+  display: flex;
+  align-items: center;
+  background-color: var(--active-blue);
+}
+
+.file-heading {
+  position: relative;
+  font-size: 0.7em;
+  color: white;
+}
+
+.heading-icon {
+  width: 22px;
+  height: auto;
+  position: absolute;
+  top: -11px;
+  left: -4px;
+}
+
+.heading-text {
+  min-width: 100px;
+  position: absolute;
+  top: -13px;
+  left: 24px;
+}
+
+.file-window-btns {
+  margin-left: auto;
+  display: flex;
+  gap: 4px;
+}
+
+.file-window-btn {
+  padding-right: 2px;
+  padding-left: 1px;
+  padding-bottom: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: var(--outset);
+}
+
+.file-window-btn:active {
+  box-shadow: var(--light-inset);
+}
+
+.file-tabs {
+  margin: 10px 14px 0 14px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 4px;
+}
+
+.tab {
+  padding: 4px 12px 4px 12px;
+  font-size: 0.9em;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  background-color: var(--border-main-color);
+  box-shadow: inset -1px -1px var(--border-dark-color), -1px -1px white, -1px 0 white, 0 -1px white, 1px 0px black, -1px 0px black, 1px -1px black;
+}
+
+.tab:active {
+  /*sort out z-index stuff later.*/
+  z-index: 500;
+  box-shadow: inset 0px -1px var(--border-main-color), inset -1px -1px var(--border-dark-color), -1px -1px white, -1px 0 white, 0 -1px white, 1px 0px black, -1px 0px black, 1px -1px black;
+}
+
+.file-content {
+  margin: 0 10px 0 10px;
+  padding: 10px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--outset);
+}
+
+.file-description {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 14px;
+}
+
+.file-description img {
+  width: 70%;
+  height: 220px;
+  align-self: center;
+  box-shadow: var(--inset);
+}
+
+.file-buttons {
+  margin: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.file-buttons button {
+  width: 80px;
+  padding: 4px;
+  font-size: 0.9em;
+  box-shadow: var(--outset);
+}
+
+.file-buttons button:active {
+  box-shadow: var(--inset);
+}

@@ -1,9 +1,13 @@
 #projects {
-  margin: 20px;
-  min-width: 230px;
-  max-width: 700px;
   padding: 4px;
-  display: flex;
+  /* without this percentage width setting the folder is not flexible. Remove this in the future in favor of media queries.*/
+  width: 40%;
+  min-width: 230px;
+  max-width: 540px;
+  position: absolute;
+  top: 100px;
+  left: 100px;
+  display: none;
   flex-direction: column;
   background-color: var(--border-main-color);
   border-top: 1px solid white;
@@ -18,7 +22,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--header-active);
+  background-color: var(--active-blue);
 }
 
 #heading-cont {
@@ -43,7 +47,7 @@
   color: white;
 }
 
-#window-btns {
+.window-btns {
   display: flex;
   gap: 4px;
 }
@@ -94,10 +98,25 @@
   background-color: white;
 }
 
+.file p {
+  padding-left: 1px;
+}
+
 .file img {
   width: 32px;
   height: auto;
 }
+
+.file:active p {
+  color: white;
+  background-color: var(--active-blue);
+}
+
+.file:active img {
+  filter: invert(15%) sepia(43%) saturate(5920%) hue-rotate(239deg) brightness(81%) contrast(127%);
+}
+
+
 
 #folder-footer {
   margin-top: 5px;

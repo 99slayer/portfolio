@@ -1,3 +1,52 @@
 #display {
   flex: 1;
+  position: relative;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+#display-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, 110px);
+  grid-template-rows: 110px;
+  padding: 10px;
+}
+
+.display-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.display-icon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}
+
+.display-icon:active p {
+  background-color: var(--active-blue);
+}
+
+.display-icon:active img {
+  filter: invert(15%) sepia(43%) saturate(5920%) hue-rotate(239deg) brightness(81%) contrast(127%);
+}
+
+.display-icon img {
+  width: 50px;
+  height: auto;
+}
+
+#projects-icon {
+  gap: 6px;
+}
+
+#about-me-icon {
+  gap: 10px;
 }
