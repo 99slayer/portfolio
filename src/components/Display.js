@@ -1,13 +1,54 @@
-import React from 'react';
+import React, { useState } from 'react';
 import '../css/Display.css';
+// import folderIcon1 from '../assets/folder-icon-1.png';
+import fileIcon1 from '../assets/file-icon-1.png';
+import folderIcon2 from '../assets/folder-icon-2.png';
+import { projectDetails } from '../project-details';
 import { Projects } from './Projects';
-import { Contact } from './Contact';
+import { Contact } from './About';
+import { File } from './File';
 
 export function Display() {
+  const [openArr, setOpenArr] = useState([]);
+
+  const openWindow = (x) => {
+    // x needs to match the project-details.js filename for each project file.
+    setOpenArr(openArr.concat(x));
+  }
+
+  const closeWindow = (x) => {
+    const copy = [...openArr];
+    const index = copy.indexOf(x);
+
+    if (index >= 0) {
+      copy.splice(index, 1);
+      setOpenArr(copy);
+    };
+  };
+
   return (
     <div id='display'>
-      <Projects />
-      <Contact />
+      <div id='display-grid'>
+        <div className='display-cell'>
+          <div id='projects-icon' className='display-icon' onClick={() => {
+            openWindow('project folder');
+          }}>
+            <img src={folderIcon2} />
+            <p>My Projects</p>
+          </div>
+        </div>
+        <div className='display-cell'>
+          <div id='about-me-icon' className='display-icon' onClick={() => {
+            openWindow('about me');
+          }}>
+            <img src={fileIcon1} />
+            <p>About Me</p>
+          </div>
+        </div>
+      </div>
+      <File openArr={openArr} closeWindow={closeWindow} details={projectDetails.photoTaggingApp} />
+      <Projects openArr={openArr} closeWindow={closeWindow} />
+      <Contact openArr={openArr} closeWindow={closeWindow} />
     </div>
   )
 }
