@@ -22,6 +22,9 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
   font-family: 'Microsoft Sans Serif', sans-serif;
 
   --border-main-color: rgb(201, 201, 201);
@@ -60,6 +63,6 @@ button {
   background-image: url(/src/assets/windows-xp-background.jpg);
 }
 
-.open {
+.visible {
   display: flex !important;
 }

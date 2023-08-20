@@ -1,26 +1,38 @@
 #taskbar {
-  margin-top: auto;
-  padding: 5px 4px 4px 4px;
+  padding: 5px 6px 4px 6px;
   min-width: 100vw;
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
   border-top: 1px solid white;
   background-color: var(--border-main-color);
   box-shadow: 0px -1px var(--border-main-color);
 }
 
 #start-btn {
-  padding: 0;
-  width: 27px;
-}
-
-.taskbar-btn {
-  padding: 2px 40px 2px 40px;
+  padding: 2px 10px 2px 10px;
+  font-size: 1em;
   box-shadow: var(--outset);
 }
 
-.taskbar-btn:active {
+#start-btn:active {
+  box-shadow: var(--inset);
+}
+
+#taskbar-tabs{
+  display: flex;
+  align-items: center;
+  gap:  6px;
+  list-style: none;
+}
+
+.taskbar-tab {
+  padding: 2px 40px 2px 40px;
+  font-size: 1em;
+  box-shadow: var(--outset);
+}
+
+.taskbar-tab:active {
   box-shadow: var(--inset);
 }
 
