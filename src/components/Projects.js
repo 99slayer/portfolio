@@ -7,31 +7,40 @@ import driveIcon from '../assets/hard-drive-icon.png';
 import fileIcon1 from '../assets/file-icon-1.png';
 
 export function Projects(props) {
-  const { openArr, closeWindow } = props;
+  const { openArr, visibleArr, hide, closeWindow } = props;
 
-  const [open, setOpen] = useState(false);
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    if (openArr.includes('project folder')) {
-      setOpen(true);
-    } else if (!openArr.includes('project folder')) {
-      setOpen(false);
-    };
+    if (!openArr.includes('My Projects')) {
+      hide('My Projects');
+    }
   }, [openArr])
 
+  useEffect(() => {
+    if (visibleArr.includes('My Projects')) {
+      setVisible(true);
+    } else if (!visibleArr.includes('My Projects')) {
+      setVisible(false);
+    };
+  }, [visibleArr])
+
   return (
-    <div id='projects' className={open ? 'open' : ''}>
+    <div id='projects' className={visible ? 'visible' : ''}>
       <header id="folder-header">
         <div id="upper-header">
           <div id="heading-cont">
             <img id="header-icon" src={driveIcon} alt="" />
-            <h3 id="folder-name">projects</h3>
+            <h3 id="folder-name">My Projects</h3>
           </div>
           <div className="window-btns">
-            <button className="window-btn"><img src={minimizeIcon} alt="" /></button>
+            <button className="window-btn" onClick={() => {
+              hide('My Projects');
+            }}><img src={minimizeIcon} alt="" /></button>
             <button className="window-btn"><img src={maximizeIcon} alt="" /></button>
-            <button className="window-btn" onClick={() => { closeWindow('project folder') }}><img src={closeIcon} alt="" /></button>
+            <button className="window-btn" onClick={() => {
+              closeWindow('My Projects');
+            }}><img src={closeIcon} alt="" /></button>
           </div>
         </div>
         <div id="folder-btns">
