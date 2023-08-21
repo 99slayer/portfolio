@@ -5,9 +5,10 @@ import maximizeIcon from '../assets/maximize-icon.png';
 import closeIcon from '../assets/close-icon.png';
 import driveIcon from '../assets/hard-drive-icon.png';
 import fileIcon1 from '../assets/file-icon-1.png';
+import { projectDetails } from '../project-details';
 
 export function Projects(props) {
-  const { openArr, visibleArr, hide, closeWindow } = props;
+  const { openArr, visibleArr, openWindow, closeWindow, show, hide, setToActive, getWindowZIndex } = props;
 
   const [visible, setVisible] = useState(false);
 
@@ -25,8 +26,29 @@ export function Projects(props) {
     };
   }, [visibleArr])
 
+  const renderFileIcons = (projects) => {
+    const icons = [];
+
+    for (let project in projects) {
+      icons.push(
+        <button className="file" onClick={() => {
+          openWindow(projects[project].name);
+          show(projects[project].name);
+          setToActive(projects[project].name);
+        }}>
+          <img src={fileIcon1} alt="" />
+          <p>{projects[project].name}</p>
+        </button>
+      );
+    };
+
+    return icons;
+  }
+
   return (
-    <div id='projects' className={visible ? 'visible' : ''}>
+    <div id='projects' className={visible ? 'visible' : ''} style={{ zIndex: getWindowZIndex('My Projects') }} onClick={() => {
+      setToActive('My Projects');
+    }}>
       <header id="folder-header">
         <div id="upper-header">
           <div id="heading-cont">
@@ -51,49 +73,10 @@ export function Projects(props) {
         </div>
       </header>
       <div id="file-icons">
-        <button className="file">
-          <img src={fileIcon1} alt="" />
-          <p>file name</p>
-        </button>
-        <button className="file">
-          <img src={fileIcon1} alt="" />
-          <p>file name</p>
-        </button>
-        <button className="file">
-          <img src={fileIcon1} alt="" />
-          <p>file name</p>
-        </button>
-        <button className="file">
-          <img src={fileIcon1} alt="" />
-          <p>file name</p>
-        </button>
-        <button className="file">
-          <img src={fileIcon1} alt="" />
-          <p>file name</p>
-        </button>
-        <button className="file">
-          <img src={fileIcon1} alt="" />
-          <p>file name</p>
-        </button>
-        <button className="file">
-          <img src={fileIcon1} alt="" />
-          <p>file name</p>
-        </button>
-        <button className="file">
-          <img src={fileIcon1} alt="" />
-          <p>file name</p>
-        </button>
-        <button className="file">
-          <img src={fileIcon1} alt="" />
-          <p>file name</p>
-        </button>
-        <button className="file">
-          <img src={fileIcon1} alt="" />
-          <p>file name</p>
-        </button>
+        {renderFileIcons(projectDetails)}
       </div>
       <footer id="folder-footer">
-        <div className="footer-object">6 object(s)</div>
+        <div className="footer-object">{`${Object.keys(projectDetails).length} object(s)`}</div>
         <div className="footer-object"> </div>
       </footer>
     </div>
