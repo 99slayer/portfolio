@@ -81,9 +81,11 @@
 }
 
 #file-icons {
+  min-height: 160px;
   padding: 2px;
   display: grid;
   grid-template-columns: repeat(auto-fit, 80px);
+  grid-template-rows: repeat(auto-fit, 80px);
   background-color: white;
   box-shadow: var(--inset);
 }
