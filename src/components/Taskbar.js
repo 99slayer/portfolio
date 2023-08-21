@@ -9,25 +9,26 @@ export function Taskbar(props) {
 
     openArr.forEach((e) => {
       elements.push(
-        <li className='taskbar-tab' onClick={() => {
-          show(e);
-          setToActive(e);
-        }}>
+        <li
+          className="taskbar-tab"
+          onClick={() => {
+            show(e);
+            setToActive(e);
+          }}
+        >
           <p>{e}</p>
         </li>
-      )
-    })
+      );
+    });
 
     return elements;
   };
 
   return (
-    <nav id='taskbar'>
+    <nav id="taskbar">
       <button id="start-btn">Start</button>
-      <ul id='taskbar-tabs'>
-        {renderTabs()}
-      </ul>
+      <ul id="taskbar-tabs">{renderTabs()}</ul>
       <div id="time">10:24 PM</div>
     </nav>
-  )
+  );
 }

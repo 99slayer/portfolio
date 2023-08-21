@@ -14,7 +14,13 @@
   border-right: 1px solid var(--border-dark-color);
   border-bottom: 1px solid var(--border-dark-color);
   border-left: 1px solid white;
-  box-shadow: -1px -1px var(--border-main-color), -1px 0px var(--border-main-color), 0px -1px var(--border-main-color), 1px 1px black, -1px 1px black, 1px -1px black;
+  box-shadow:
+    -1px -1px var(--border-main-color),
+    -1px 0px var(--border-main-color),
+    0px -1px var(--border-main-color),
+    1px 1px black,
+    -1px 1px black,
+    1px -1px black;
 }
 
 #upper-header {
@@ -116,10 +122,9 @@
 }
 
 .file:active img {
-  filter: invert(15%) sepia(43%) saturate(5920%) hue-rotate(239deg) brightness(81%) contrast(127%);
+  filter: invert(15%) sepia(43%) saturate(5920%) hue-rotate(239deg)
+    brightness(81%) contrast(127%);
 }
-
-
 
 #folder-footer {
   margin-top: 5px;

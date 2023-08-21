@@ -8,7 +8,16 @@ import fileIcon1 from '../assets/file-icon-1.png';
 import { projectDetails } from '../project-details';
 
 export function Projects(props) {
-  const { openArr, visibleArr, openWindow, closeWindow, show, hide, setToActive, getWindowZIndex } = props;
+  const {
+    openArr,
+    visibleArr,
+    openWindow,
+    closeWindow,
+    show,
+    hide,
+    setToActive,
+    getWindowZIndex
+  } = props;
 
   const [visible, setVisible] = useState(false);
 
@@ -16,39 +25,47 @@ export function Projects(props) {
     if (!openArr.includes('My Projects')) {
       hide('My Projects');
     }
-  }, [openArr])
+  }, [openArr]);
 
   useEffect(() => {
     if (visibleArr.includes('My Projects')) {
       setVisible(true);
     } else if (!visibleArr.includes('My Projects')) {
       setVisible(false);
-    };
-  }, [visibleArr])
+    }
+  }, [visibleArr]);
 
   const renderFileIcons = (projects) => {
     const icons = [];
 
     for (let project in projects) {
       icons.push(
-        <button className="file" onClick={() => {
-          openWindow(projects[project].name);
-          show(projects[project].name);
-          setToActive(projects[project].name);
-        }}>
+        <button
+          className="file"
+          onClick={() => {
+            openWindow(projects[project].name);
+            show(projects[project].name);
+            setToActive(projects[project].name);
+          }}
+        >
           <img src={fileIcon1} alt="" />
           <p>{projects[project].name}</p>
         </button>
       );
-    };
+    }
 
     return icons;
-  }
+  };
 
   return (
-    <div id='projects' className={visible ? 'visible' : ''} style={{ zIndex: getWindowZIndex('My Projects') }} onClick={() => {
-      setToActive('My Projects');
-    }}>
+    <div
+      id="projects"
+      className={visible ? 'visible' : ''}
+      style={{ zIndex: getWindowZIndex('My Projects') }}
+      onClick={() => {
+        setToActive('My Projects');
+      }}
+    >
       <header id="folder-header">
         <div id="upper-header">
           <div id="heading-cont">
@@ -56,29 +73,49 @@ export function Projects(props) {
             <h3 id="folder-name">My Projects</h3>
           </div>
           <div className="window-btns">
-            <button className="window-btn" onClick={() => {
-              hide('My Projects');
-            }}><img src={minimizeIcon} alt="" /></button>
-            <button className="window-btn"><img src={maximizeIcon} alt="" /></button>
-            <button className="window-btn" onClick={() => {
-              closeWindow('My Projects');
-            }}><img src={closeIcon} alt="" /></button>
+            <button
+              className="window-btn"
+              onClick={() => {
+                hide('My Projects');
+              }}
+            >
+              <img src={minimizeIcon} alt="" />
+            </button>
+            <button className="window-btn">
+              <img src={maximizeIcon} alt="" />
+            </button>
+            <button
+              className="window-btn"
+              onClick={() => {
+                closeWindow('My Projects');
+              }}
+            >
+              <img src={closeIcon} alt="" />
+            </button>
           </div>
         </div>
         <div id="folder-btns">
-          <button className="folder-btn"><u>F</u>ile</button>
-          <button className="folder-btn"><u>E</u>dit</button>
-          <button className="folder-btn"><u>V</u>iew</button>
-          <button className="folder-btn"><u>H</u>elp</button>
+          <button className="folder-btn">
+            <u>F</u>ile
+          </button>
+          <button className="folder-btn">
+            <u>E</u>dit
+          </button>
+          <button className="folder-btn">
+            <u>V</u>iew
+          </button>
+          <button className="folder-btn">
+            <u>H</u>elp
+          </button>
         </div>
       </header>
-      <div id="file-icons">
-        {renderFileIcons(projectDetails)}
-      </div>
+      <div id="file-icons">{renderFileIcons(projectDetails)}</div>
       <footer id="folder-footer">
-        <div className="footer-object">{`${Object.keys(projectDetails).length} object(s)`}</div>
+        <div className="footer-object">{`${
+          Object.keys(projectDetails).length
+        } object(s)`}</div>
         <div className="footer-object"> </div>
       </footer>
     </div>
-  )
+  );
 }

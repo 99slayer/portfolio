@@ -1,9 +1,5 @@
 import React from 'react';
 
 export function Contact() {
-  return (
-    <div>
-
-    </div>
-  )
+  return <div></div>;
 }

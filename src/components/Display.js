@@ -22,7 +22,7 @@ export function Display() {
     }
 
     setOpenArr(openArr.concat(x));
-  }
+  };
 
   const closeWindow = (x) => {
     const copy = [...openArr];
@@ -31,7 +31,7 @@ export function Display() {
     if (index >= 0) {
       copy.splice(index, 1);
       setOpenArr(copy);
-    };
+    }
   };
   // ------------------------------------- //
 
@@ -51,7 +51,7 @@ export function Display() {
     if (index >= 0) {
       copy.splice(index, 1);
       setVisibleArr(copy);
-    };
+    }
   };
   // ------------------------------------- //
 
@@ -59,11 +59,11 @@ export function Display() {
   const setToActive = (x) => {
     if (activeArr[activeArr.length - 1] === x) {
       return;
-    };
+    }
 
     if (activeArr.includes(x)) {
       removeFromActive(x);
-    };
+    }
 
     setActiveArr(activeArr.concat(x));
   };
@@ -73,14 +73,14 @@ export function Display() {
 
     if (index >= 0) {
       setActiveArr(activeArr.splice(index, 1));
-    };
+    }
   };
   // ------------------------------------- //
 
   const getWindowZIndex = (x) => {
     const index = activeArr.indexOf(x);
     return index + 1;
-  }
+  };
 
   const renderFiles = (projects) => {
     const fileElements = [];
@@ -97,30 +97,38 @@ export function Display() {
           setToActive={setToActive}
           details={projects[project]}
         />
-      )
+      );
     }
 
     return fileElements;
-  }
+  };
 
   return (
-    <div id='display'>
-      <div id='display-grid'>
-        <div className='display-cell'>
-          <div id='projects-icon' className='display-icon' onClick={() => {
-            openWindow('My Projects');
-            show('My Projects');
-            setToActive('My Projects');
-          }}>
+    <div id="display">
+      <div id="display-grid">
+        <div className="display-cell">
+          <div
+            id="projects-icon"
+            className="display-icon"
+            onClick={() => {
+              openWindow('My Projects');
+              show('My Projects');
+              setToActive('My Projects');
+            }}
+          >
             <img src={folderIcon2} />
             <p>My Projects</p>
           </div>
         </div>
-        <div className='display-cell'>
-          <div id='about-me-icon' className='display-icon' onClick={() => {
-            openWindow('About Me');
-            show('About Me');
-          }}>
+        <div className="display-cell">
+          <div
+            id="about-me-icon"
+            className="display-icon"
+            onClick={() => {
+              openWindow('About Me');
+              show('About Me');
+            }}
+          >
             <img src={fileIcon1} />
             <p>About Me</p>
           </div>
@@ -140,7 +148,14 @@ export function Display() {
         setToActive={setToActive}
         getWindowZIndex={getWindowZIndex}
       />
-      <Contact openArr={openArr} visibleArr={visibleArr} activeArr={activeArr} getWindowZIndex={getWindowZIndex} hide={hide} closeWindow={closeWindow} />
+      <Contact
+        openArr={openArr}
+        visibleArr={visibleArr}
+        activeArr={activeArr}
+        getWindowZIndex={getWindowZIndex}
+        hide={hide}
+        closeWindow={closeWindow}
+      />
     </div>
-  )
+  );
 }

@@ -32,7 +32,8 @@
 }
 
 .display-icon:active img {
-  filter: invert(15%) sepia(43%) saturate(5920%) hue-rotate(239deg) brightness(81%) contrast(127%);
+  filter: invert(15%) sepia(43%) saturate(5920%) hue-rotate(239deg)
+    brightness(81%) contrast(127%);
 }
 
 .display-icon img {

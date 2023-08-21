@@ -19,10 +19,10 @@
   box-shadow: var(--inset);
 }
 
-#taskbar-tabs{
+#taskbar-tabs {
   display: flex;
   align-items: center;
-  gap:  6px;
+  gap: 6px;
   list-style: none;
 }
 
