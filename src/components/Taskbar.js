@@ -2,15 +2,17 @@ import React, { useState, useEffect } from 'react';
 import '../css/Taskbar.css';
 
 export function Taskbar(props) {
-  const { openArr, show, setToActive } = props;
+  const { openArr, activeArr, show, setToActive } = props;
 
   const renderTabs = () => {
     const elements = [];
 
-    openArr.forEach((e) => {
+    openArr.forEach((e, index) => {
       elements.push(
         <li
-          className="taskbar-tab"
+          className={`${
+            e === activeArr[activeArr.length - 1] ? 'active-tab' : ''
+          } taskbar-tab`}
           onClick={() => {
             show(e);
             setToActive(e);
