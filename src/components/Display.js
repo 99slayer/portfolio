@@ -134,7 +134,12 @@ export function Display() {
           </div>
         </div>
       </div>
-      <Taskbar openArr={openArr} show={show} setToActive={setToActive} />
+      <Taskbar
+        openArr={openArr}
+        activeArr={activeArr}
+        show={show}
+        setToActive={setToActive}
+      />
       {renderFiles(projectDetails)}
 
       <Projects
