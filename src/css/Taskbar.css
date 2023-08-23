@@ -36,6 +36,10 @@
   box-shadow: var(--inset);
 }
 
+.active-tab {
+  box-shadow: var(--inset);
+}
+
 #time {
   margin-left: auto;
   padding: 2px;
