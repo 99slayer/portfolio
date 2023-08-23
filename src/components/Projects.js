@@ -6,6 +6,7 @@ import closeIcon from '../assets/close-icon.png';
 import driveIcon from '../assets/hard-drive-icon.png';
 import fileIcon1 from '../assets/file-icon-1.png';
 import { projectDetails } from '../project-details';
+import { windowDrag } from '../windowDrag';
 
 export function Projects(props) {
   const {
@@ -20,6 +21,10 @@ export function Projects(props) {
   } = props;
 
   const [visible, setVisible] = useState(false);
+  const [position, setPosition] = useState({
+    x: 100,
+    y: 100
+  });
 
   useEffect(() => {
     if (!openArr.includes('My Projects')) {
@@ -61,13 +66,24 @@ export function Projects(props) {
     <div
       id="projects"
       className={visible ? 'visible' : ''}
-      style={{ zIndex: getWindowZIndex('My Projects') }}
+      style={{
+        zIndex: getWindowZIndex('My Projects'),
+        top: position.y,
+        left: position.x
+      }}
       onClick={() => {
         setToActive('My Projects');
       }}
     >
       <header id="folder-header">
-        <div id="upper-header">
+        <div
+          id="upper-header"
+          onMouseDown={(e) => {
+            setToActive('My Projects');
+            e.target.style.cursor = 'grabbing';
+            windowDrag(e, position, setPosition);
+          }}
+        >
           <div id="heading-cont">
             <img id="header-icon" src={driveIcon} alt="" />
             <h3 id="folder-name">My Projects</h3>

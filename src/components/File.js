@@ -4,6 +4,7 @@ import minimizeIcon from '../assets/minimize-icon.png';
 import maximizeIcon from '../assets/maximize-icon.png';
 import closeIcon from '../assets/close-icon.png';
 import fileIcon3 from '../assets/file-icon-3.png';
+import { windowDrag } from '../windowDrag';
 
 export function File(props) {
   const {
@@ -17,6 +18,10 @@ export function File(props) {
   } = props;
 
   const [visible, setVisible] = useState(false);
+  const [position, setPosition] = useState({
+    x: 40,
+    y: 40
+  });
 
   useEffect(() => {
     if (!openArr.includes(details.name)) {
@@ -35,12 +40,23 @@ export function File(props) {
   return (
     <section
       className={`${visible ? 'visible' : ''} file-template`}
-      style={{ zIndex: getWindowZIndex(details.name) }}
+      style={{
+        zIndex: getWindowZIndex(details.name),
+        top: `${position.y}px`,
+        left: `${position.x}px`
+      }}
       onClick={() => {
         setToActive(details.name);
       }}
     >
-      <header className="file-header">
+      <header
+        className="file-header"
+        onMouseDown={(e) => {
+          setToActive(details.name);
+          e.target.style.cursor = 'grabbing';
+          windowDrag(e, position, setPosition);
+        }}
+      >
         <div className="file-heading">
           <img className="heading-icon" src={fileIcon3} />
           <h3 className="heading-text">FILE NAME</h3>
