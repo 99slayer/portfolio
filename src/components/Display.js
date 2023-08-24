@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import '../css/Display.css';
 // import folderIcon1 from '../assets/folder-icon-1.png';
 import fileIcon1 from '../assets/file-icon-1.png';
@@ -6,7 +6,7 @@ import folderIcon2 from '../assets/folder-icon-2.png';
 import { projectDetails } from '../project-details';
 import { Taskbar } from './Taskbar';
 import { Projects } from './Projects';
-import { Contact } from './About';
+import { About } from './About';
 import { File } from './File';
 
 export function Display() {
@@ -45,13 +45,19 @@ export function Display() {
   };
 
   const hide = (x) => {
-    const copy = [...visibleArr];
-    const index = copy.indexOf(x);
+    // Time value should be animation duration.
+    setTimeout(() => {
+      const copy = [...visibleArr];
+      const index = copy.indexOf(x);
 
-    if (index >= 0) {
-      copy.splice(index, 1);
-      setVisibleArr(copy);
-    }
+      if (index >= 0) {
+        copy.splice(index, 1);
+        setVisibleArr(copy);
+      }
+    }, 300);
+
+    const element = document.querySelector(`[data-component-name="${x}"]`);
+    element.classList.add('hidden-animation');
   };
   // ------------------------------------- //
 
@@ -127,6 +133,7 @@ export function Display() {
             onClick={() => {
               openWindow('About Me');
               show('About Me');
+              setToActive('About Me');
             }}
           >
             <img src={fileIcon1} />
@@ -153,13 +160,14 @@ export function Display() {
         setToActive={setToActive}
         getWindowZIndex={getWindowZIndex}
       />
-      <Contact
+      <About
         openArr={openArr}
         visibleArr={visibleArr}
         activeArr={activeArr}
-        getWindowZIndex={getWindowZIndex}
-        hide={hide}
         closeWindow={closeWindow}
+        hide={hide}
+        setToActive={setToActive}
+        getWindowZIndex={getWindowZIndex}
       />
     </div>
   );
