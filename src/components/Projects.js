@@ -4,7 +4,7 @@ import minimizeIcon from '../assets/minimize-icon.png';
 import maximizeIcon from '../assets/maximize-icon.png';
 import closeIcon from '../assets/close-icon.png';
 import driveIcon from '../assets/hard-drive-icon.png';
-import fileIcon1 from '../assets/file-icon-1.png';
+import fileIcon2 from '../assets/file-icon-2.png';
 import { projectDetails } from '../project-details';
 import { windowDrag } from '../windowDrag';
 
@@ -53,7 +53,7 @@ export function Projects(props) {
             setToActive(projects[project].name);
           }}
         >
-          <img src={fileIcon1} alt="" />
+          <img src={fileIcon2} alt="" />
           <p>{projects[project].name}</p>
         </button>
       );
@@ -65,7 +65,8 @@ export function Projects(props) {
   return (
     <div
       id="projects"
-      className={visible ? 'visible' : ''}
+      className={visible ? 'visible visible-animation' : ''}
+      data-component-name={'My Projects'}
       style={{
         zIndex: getWindowZIndex('My Projects'),
         top: position.y,

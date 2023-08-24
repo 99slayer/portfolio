@@ -39,7 +39,8 @@ export function File(props) {
 
   return (
     <section
-      className={`${visible ? 'visible' : ''} file-template`}
+      className={`${visible ? 'visible visible-animation' : ''} file-template`}
+      data-component-name={details.name}
       style={{
         zIndex: getWindowZIndex(details.name),
         top: `${position.y}px`,
