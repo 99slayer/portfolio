@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import '../css/About.css';
 import minimizeIcon from '../assets/minimize-icon.png';
 import maximizeIcon from '../assets/maximize-icon.png';
@@ -16,10 +16,29 @@ export function About(props) {
     getWindowZIndex
   } = props;
 
+  const ref = useRef(null);
+
   const [visible, setVisible] = useState(false);
   const [position, setPosition] = useState({
     x: 100,
     y: 100
+  });
+  const [size, setSize] = useState({
+    width: 0,
+    height: 0,
+  });
+
+  useEffect(() => {
+    if (size.width > 0 && size.height > 0) {
+      return;
+    };
+
+    if (visible) {
+      setSize({
+        width: ref.current.offsetWidth,
+        height: ref.current.offsetHeight,
+      });
+    };
   });
 
   useEffect(() => {
@@ -40,6 +59,7 @@ export function About(props) {
     <div
       id="about"
       className={visible ? 'visible visible-animation' : ''}
+      ref={ref}
       data-component-name={'About Me'}
       style={{
         zIndex: getWindowZIndex('About Me'),
@@ -56,7 +76,7 @@ export function About(props) {
           onMouseDown={(e) => {
             setToActive('About Me');
             e.target.style.cursor = 'grabbing';
-            windowDrag(e, position, setPosition);
+            windowDrag(e, position, setPosition, size);
           }}
         >
           <div id="about-heading-cont">

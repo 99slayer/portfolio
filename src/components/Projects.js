@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import '../css/Projects.css';
 import minimizeIcon from '../assets/minimize-icon.png';
 import maximizeIcon from '../assets/maximize-icon.png';
@@ -20,10 +20,30 @@ export function Projects(props) {
     getWindowZIndex
   } = props;
 
+  const ref = useRef(null);
+
   const [visible, setVisible] = useState(false);
   const [position, setPosition] = useState({
     x: 100,
     y: 100
+  });
+  const [size, setSize] = useState({
+    width: 0,
+    height: 0,
+  });
+
+  // This is pretty scuffed but it's working.
+  useEffect(() => {
+    if (size.width > 0 && size.height > 0) {
+      return;
+    };
+
+    if (visible) {
+      setSize({
+        width: ref.current.offsetWidth,
+        height: ref.current.offsetHeight,
+      });
+    };
   });
 
   useEffect(() => {
@@ -66,6 +86,7 @@ export function Projects(props) {
     <div
       id="projects"
       className={visible ? 'visible visible-animation' : ''}
+      ref={ref}
       data-component-name={'My Projects'}
       style={{
         zIndex: getWindowZIndex('My Projects'),
@@ -82,7 +103,7 @@ export function Projects(props) {
           onMouseDown={(e) => {
             setToActive('My Projects');
             e.target.style.cursor = 'grabbing';
-            windowDrag(e, position, setPosition);
+            windowDrag(e, position, setPosition, size);
           }}
         >
           <div id="heading-cont">
@@ -128,9 +149,8 @@ export function Projects(props) {
       </header>
       <div id="file-icons">{renderFileIcons(projectDetails)}</div>
       <footer id="folder-footer">
-        <div className="footer-object">{`${
-          Object.keys(projectDetails).length
-        } object(s)`}</div>
+        <div className="footer-object">{`${Object.keys(projectDetails).length
+          } object(s)`}</div>
         <div className="footer-object"> </div>
       </footer>
     </div>

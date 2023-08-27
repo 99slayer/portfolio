@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import '../css/File.css';
 import minimizeIcon from '../assets/minimize-icon.png';
 import maximizeIcon from '../assets/maximize-icon.png';
@@ -17,10 +17,29 @@ export function File(props) {
     details
   } = props;
 
+  const ref = useRef(null);
+
   const [visible, setVisible] = useState(false);
   const [position, setPosition] = useState({
-    x: 40,
-    y: 40
+    x: 100,
+    y: 100
+  });
+  const [size, setSize] = useState({
+    width: 0,
+    height: 0,
+  });
+
+  useEffect(() => {
+    if (size.width > 0 && size.height > 0) {
+      return;
+    };
+
+    if (visible) {
+      setSize({
+        width: ref.current.offsetWidth,
+        height: ref.current.offsetHeight,
+      });
+    };
   });
 
   useEffect(() => {
@@ -40,6 +59,7 @@ export function File(props) {
   return (
     <section
       className={`${visible ? 'visible visible-animation' : ''} file-template`}
+      ref={ref}
       data-component-name={details.name}
       style={{
         zIndex: getWindowZIndex(details.name),
@@ -55,7 +75,7 @@ export function File(props) {
         onMouseDown={(e) => {
           setToActive(details.name);
           e.target.style.cursor = 'grabbing';
-          windowDrag(e, position, setPosition);
+          windowDrag(e, position, setPosition, size);
         }}
       >
         <div className="file-heading">
