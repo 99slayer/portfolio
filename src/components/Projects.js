@@ -7,6 +7,7 @@ import driveIcon from '../assets/hard-drive-icon.png';
 import fileIcon2 from '../assets/file-icon-2.png';
 import { projectDetails } from '../project-details';
 import { windowDrag } from '../windowDrag';
+import uniqid from 'uniqid';
 
 export function Projects(props) {
   const {
@@ -29,21 +30,21 @@ export function Projects(props) {
   });
   const [size, setSize] = useState({
     width: 0,
-    height: 0,
+    height: 0
   });
 
   // This is pretty scuffed but it's working.
   useEffect(() => {
     if (size.width > 0 && size.height > 0) {
       return;
-    };
+    }
 
     if (visible) {
       setSize({
         width: ref.current.offsetWidth,
-        height: ref.current.offsetHeight,
+        height: ref.current.offsetHeight
       });
-    };
+    }
   });
 
   useEffect(() => {
@@ -67,7 +68,9 @@ export function Projects(props) {
       icons.push(
         <button
           className="file"
-          onClick={() => {
+          key={uniqid()}
+          onClick={(e) => {
+            e.stopPropagation();
             openWindow(projects[project].name);
             show(projects[project].name);
             setToActive(projects[project].name);
@@ -85,7 +88,7 @@ export function Projects(props) {
   return (
     <div
       id="projects"
-      className={visible ? 'visible visible-animation' : ''}
+      className={visible ? null : 'hidden'}
       ref={ref}
       data-component-name={'My Projects'}
       style={{
@@ -95,6 +98,14 @@ export function Projects(props) {
       }}
       onClick={() => {
         setToActive('My Projects');
+      }}
+      onTransitionEnd={() => {
+        if (!openArr.includes('My Projects')) {
+          setPosition({
+            x: 100,
+            y: 100
+          });
+        }
       }}
     >
       <header id="folder-header">
@@ -149,8 +160,9 @@ export function Projects(props) {
       </header>
       <div id="file-icons">{renderFileIcons(projectDetails)}</div>
       <footer id="folder-footer">
-        <div className="footer-object">{`${Object.keys(projectDetails).length
-          } object(s)`}</div>
+        <div className="footer-object">{`${
+          Object.keys(projectDetails).length
+        } object(s)`}</div>
         <div className="footer-object"> </div>
       </footer>
     </div>
