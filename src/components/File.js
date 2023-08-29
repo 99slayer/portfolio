@@ -26,20 +26,20 @@ export function File(props) {
   });
   const [size, setSize] = useState({
     width: 0,
-    height: 0,
+    height: 0
   });
 
   useEffect(() => {
     if (size.width > 0 && size.height > 0) {
       return;
-    };
+    }
 
     if (visible) {
       setSize({
         width: ref.current.offsetWidth,
-        height: ref.current.offsetHeight,
+        height: ref.current.offsetHeight
       });
-    };
+    }
   });
 
   useEffect(() => {
@@ -58,7 +58,7 @@ export function File(props) {
 
   return (
     <section
-      className={`${visible ? 'visible visible-animation' : ''} file-template`}
+      className={`${visible ? null : 'hidden'} file-template`}
       ref={ref}
       data-component-name={details.name}
       style={{
@@ -68,6 +68,14 @@ export function File(props) {
       }}
       onClick={() => {
         setToActive(details.name);
+      }}
+      onTransitionEnd={() => {
+        if (!openArr.includes(details.name)) {
+          setPosition({
+            x: 100,
+            y: 100
+          });
+        }
       }}
     >
       <header

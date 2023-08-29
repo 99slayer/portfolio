@@ -25,20 +25,20 @@ export function About(props) {
   });
   const [size, setSize] = useState({
     width: 0,
-    height: 0,
+    height: 0
   });
 
   useEffect(() => {
     if (size.width > 0 && size.height > 0) {
       return;
-    };
+    }
 
     if (visible) {
       setSize({
         width: ref.current.offsetWidth,
-        height: ref.current.offsetHeight,
+        height: ref.current.offsetHeight
       });
-    };
+    }
   });
 
   useEffect(() => {
@@ -58,7 +58,7 @@ export function About(props) {
   return (
     <div
       id="about"
-      className={visible ? 'visible visible-animation' : ''}
+      className={visible ? null : 'hidden'}
       ref={ref}
       data-component-name={'About Me'}
       style={{
@@ -68,6 +68,14 @@ export function About(props) {
       }}
       onClick={() => {
         setToActive('About Me');
+      }}
+      onTransitionEnd={() => {
+        if (!openArr.includes('About Me')) {
+          setPosition({
+            x: 100,
+            y: 100
+          });
+        }
       }}
     >
       <header id="about-header">
