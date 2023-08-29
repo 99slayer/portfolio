@@ -6,7 +6,8 @@ export const projectDetails = {
     links: {
       github: '',
       live: ''
-    }
+    },
+    id: 1
   },
   project2: {
     name: 'project2',
@@ -15,7 +16,8 @@ export const projectDetails = {
     links: {
       github: '',
       live: ''
-    }
+    },
+    id: 2
   },
   project3: {
     name: 'project3',
@@ -24,7 +26,8 @@ export const projectDetails = {
     links: {
       github: '',
       live: ''
-    }
+    },
+    id: 3
   },
   project4: {
     name: 'project4',
@@ -33,6 +36,7 @@ export const projectDetails = {
     links: {
       github: '',
       live: ''
-    }
+    },
+    id: 4
   }
 };
