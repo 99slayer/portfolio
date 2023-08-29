@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import '../css/Taskbar.css';
+import uniqid from 'uniqid';
 
 export function Taskbar(props) {
   const { openArr, activeArr, show, setToActive } = props;
@@ -13,6 +14,7 @@ export function Taskbar(props) {
           className={`${
             e === activeArr[activeArr.length - 1] ? 'active-tab' : ''
           } taskbar-tab`}
+          key={uniqid()}
           onClick={() => {
             show(e);
             setToActive(e);
