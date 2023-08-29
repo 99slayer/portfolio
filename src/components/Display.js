@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import '../css/Display.css';
-// import folderIcon1 from '../assets/folder-icon-1.png';
 import fileIcon1 from '../assets/file-icon-1.png';
 import folderIcon2 from '../assets/folder-icon-2.png';
 import { projectDetails } from '../project-details';
@@ -45,19 +44,13 @@ export function Display() {
   };
 
   const hide = (x) => {
-    // Time value should be animation duration.
-    setTimeout(() => {
-      const copy = [...visibleArr];
-      const index = copy.indexOf(x);
+    const copy = [...visibleArr];
+    const index = copy.indexOf(x);
 
-      if (index >= 0) {
-        copy.splice(index, 1);
-        setVisibleArr(copy);
-      }
-    }, 300);
-
-    const element = document.querySelector(`[data-component-name="${x}"]`);
-    element.classList.add('hidden-animation');
+    if (index >= 0) {
+      copy.splice(index, 1);
+      setVisibleArr(copy);
+    }
   };
   // ------------------------------------- //
 
@@ -96,12 +89,12 @@ export function Display() {
         <File
           openArr={openArr}
           visibleArr={visibleArr}
-          activeArr={activeArr}
           closeWindow={closeWindow}
           hide={hide}
           getWindowZIndex={getWindowZIndex}
           setToActive={setToActive}
           details={projects[project]}
+          key={projects[project].id}
         />
       );
     }
@@ -148,11 +141,9 @@ export function Display() {
         setToActive={setToActive}
       />
       {renderFiles(projectDetails)}
-
       <Projects
         openArr={openArr}
         visibleArr={visibleArr}
-        activeArr={activeArr}
         openWindow={openWindow}
         closeWindow={closeWindow}
         show={show}
@@ -163,7 +154,6 @@ export function Display() {
       <About
         openArr={openArr}
         visibleArr={visibleArr}
-        activeArr={activeArr}
         closeWindow={closeWindow}
         hide={hide}
         setToActive={setToActive}
