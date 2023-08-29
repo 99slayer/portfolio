@@ -58,40 +58,7 @@ button {
   background-color: #008080;
 }
 
-.visible {
-  display: flex !important;
-}
-
-.visible-animation {
-  animation-duration: 0.4s;
-  animation-name: visible-animation;
-}
-
-@keyframes visible-animation {
-  from {
-    opacity: 1;
-    transform: scale(0%);
-  }
-
-  to {
-    opacity: 1;
-    transform: scale(100%);
-  }
-}
-
-.hidden-animation {
-  animation-duration: 0.4s;
-  animation-name: hidden-animation;
-}
-
-@keyframes hidden-animation {
-  from {
-    opacity: 1;
-    transform: scale(100%);
-  }
-
-  to {
-    opacity: 0;
-    transform: scale(0%);
-  }
+.hidden {
+  opacity: 0;
+  transform: scale(0%);
 }
