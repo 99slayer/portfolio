@@ -10,6 +10,7 @@ export function About(props) {
   const {
     openArr,
     visibleArr,
+    activeArr,
     closeWindow,
     hide,
     setToActive,
@@ -19,6 +20,7 @@ export function About(props) {
   const ref = useRef(null);
 
   const [visible, setVisible] = useState(false);
+  const [active, setActive] = useState(false);
   const [position, setPosition] = useState({
     x: 100,
     y: 100
@@ -55,6 +57,14 @@ export function About(props) {
     }
   }, [visibleArr]);
 
+  useEffect(() => {
+    if (activeArr[activeArr.length - 1] === 'About Me') {
+      setActive(true);
+    } else {
+      setActive(false);
+    }
+  }, [activeArr]);
+
   return (
     <div
       id="about"
@@ -81,6 +91,7 @@ export function About(props) {
       <header id="about-header">
         <div
           id="about-upper-header"
+          style={active ? { backgroundImage: 'var(--active-blue)' } : null}
           onMouseDown={(e) => {
             setToActive('About Me');
             e.target.style.cursor = 'grabbing';
@@ -89,7 +100,12 @@ export function About(props) {
         >
           <div id="about-heading-cont">
             <img id="about-header-icon" src={fileIcon1} alt="" />
-            <h3 id="about-folder-name">About Me - Notepad</h3>
+            <h3
+              id="about-folder-name"
+              style={active ? null : { color: 'var(--border-main-color)' }}
+            >
+              About Me - Notepad
+            </h3>
           </div>
           <div className="about-window-btns">
             <button

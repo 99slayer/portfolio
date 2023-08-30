@@ -10,6 +10,7 @@ export function File(props) {
   const {
     openArr,
     visibleArr,
+    activeArr,
     closeWindow,
     hide,
     getWindowZIndex,
@@ -20,6 +21,7 @@ export function File(props) {
   const ref = useRef(null);
 
   const [visible, setVisible] = useState(false);
+  const [active, setActive] = useState(false);
   const [position, setPosition] = useState({
     x: 100,
     y: 100
@@ -56,6 +58,14 @@ export function File(props) {
     }
   }, [visibleArr]);
 
+  useEffect(() => {
+    if (activeArr[activeArr.length - 1] === details.name) {
+      setActive(true);
+    } else {
+      setActive(false);
+    }
+  }, [activeArr]);
+
   return (
     <section
       className={`${visible ? null : 'hidden'} file-template`}
@@ -80,6 +90,7 @@ export function File(props) {
     >
       <header
         className="file-header"
+        style={active ? { backgroundImage: 'var(--active-blue)' } : null}
         onMouseDown={(e) => {
           setToActive(details.name);
           e.target.style.cursor = 'grabbing';
@@ -88,7 +99,12 @@ export function File(props) {
       >
         <div className="file-heading">
           <img className="heading-icon" src={fileIcon3} />
-          <h3 className="heading-text">FILE NAME</h3>
+          <h3
+            className="heading-text"
+            style={active ? null : { color: 'var(--border-main-color)' }}
+          >
+            FILE NAME
+          </h3>
         </div>
         <div className="file-window-btns">
           <button className="file-window-btn">

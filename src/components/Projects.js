@@ -13,6 +13,7 @@ export function Projects(props) {
   const {
     openArr,
     visibleArr,
+    activeArr,
     openWindow,
     closeWindow,
     show,
@@ -24,6 +25,7 @@ export function Projects(props) {
   const ref = useRef(null);
 
   const [visible, setVisible] = useState(false);
+  const [active, setActive] = useState(false);
   const [position, setPosition] = useState({
     x: 100,
     y: 100
@@ -60,6 +62,14 @@ export function Projects(props) {
       setVisible(false);
     }
   }, [visibleArr]);
+
+  useEffect(() => {
+    if (activeArr[activeArr.length - 1] === 'My Projects') {
+      setActive(true);
+    } else {
+      setActive(false);
+    }
+  }, [activeArr]);
 
   const renderFileIcons = (projects) => {
     const icons = [];
@@ -111,6 +121,8 @@ export function Projects(props) {
       <header id="folder-header">
         <div
           id="upper-header"
+          // ** HERE **
+          style={active ? { backgroundImage: 'var(--active-blue)' } : null}
           onMouseDown={(e) => {
             setToActive('My Projects');
             e.target.style.cursor = 'grabbing';
@@ -119,7 +131,12 @@ export function Projects(props) {
         >
           <div id="heading-cont">
             <img id="header-icon" src={driveIcon} alt="" />
-            <h3 id="folder-name">My Projects</h3>
+            <h3
+              id="folder-name"
+              style={active ? null : { color: 'var(--border-main-color)' }}
+            >
+              My Projects
+            </h3>
           </div>
           <div className="window-btns">
             <button
