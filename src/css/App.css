@@ -29,7 +29,7 @@
 
   --border-main-color: rgb(201, 201, 201);
   --border-dark-color: gray;
-  --active-blue: rgb(16, 16, 163);
+  --active-blue: linear-gradient(to right, rgb(16, 16, 163), rgb(68, 180, 255));
 
   --outset: inset -1px -1px var(--border-dark-color), -1px -1px white,
     -1px 0 white, 0 -1px white, 1px 1px black, -1px 1px black, 1px -1px black;
