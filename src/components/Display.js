@@ -89,6 +89,7 @@ export function Display() {
         <File
           openArr={openArr}
           visibleArr={visibleArr}
+          activeArr={activeArr}
           closeWindow={closeWindow}
           hide={hide}
           getWindowZIndex={getWindowZIndex}
@@ -144,6 +145,7 @@ export function Display() {
       <Projects
         openArr={openArr}
         visibleArr={visibleArr}
+        activeArr={activeArr}
         openWindow={openWindow}
         closeWindow={closeWindow}
         show={show}
@@ -154,6 +156,7 @@ export function Display() {
       <About
         openArr={openArr}
         visibleArr={visibleArr}
+        activeArr={activeArr}
         closeWindow={closeWindow}
         hide={hide}
         setToActive={setToActive}

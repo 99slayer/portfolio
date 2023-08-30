@@ -25,13 +25,13 @@ export const windowDrag = (e, value, setValue, size) => {
       let wW = document.documentElement.clientWidth;
       let wH = document.documentElement.clientHeight;
 
-      if ((newX >= 0 && newX + size.width < wW)) {
+      if (newX >= 0 && newX + size.width < wW) {
         // x isn't on an edge
-        if ((newY >= 0 && newY + size.height < wH - tbh)) {
+        if (newY >= 0 && newY + size.height < wH - tbh) {
           // both x and y aren't on an edge
           setValue({
             x: newX,
-            y: newY,
+            y: newY
           });
           // ??
           return;
@@ -40,27 +40,27 @@ export const windowDrag = (e, value, setValue, size) => {
           if (newY >= 0) {
             setValue({
               x: newX,
-              y: wH - size.height - tbh,
+              y: wH - size.height - tbh
             });
           } else {
             setValue({
               x: newX,
-              y: 0,
+              y: 0
             });
           }
         }
       } else {
-        if ((newY >= 0 && newY + size.height < wH - tbh)) {
+        if (newY >= 0 && newY + size.height < wH - tbh) {
           // x is on an edge but y isnt
           if (newX >= 0) {
             setValue({
               x: wW - size.width,
-              y: newY,
+              y: newY
             });
           } else {
             setValue({
               x: 0,
-              y: newY,
+              y: newY
             });
           }
         } else {
@@ -69,7 +69,7 @@ export const windowDrag = (e, value, setValue, size) => {
             if (newY >= 0) {
               setValue({
                 x: wW - size.width,
-                y: wH - size.height - tbh,
+                y: wH - size.height - tbh
               });
             } else {
               setValue({
@@ -81,18 +81,18 @@ export const windowDrag = (e, value, setValue, size) => {
             if (newY >= 0) {
               setValue({
                 x: 0,
-                y: wH - size.height - tbh,
+                y: wH - size.height - tbh
               });
             } else {
               setValue({
                 x: 0,
-                y: 0,
+                y: 0
               });
-            };
-          };
-        };
-      };
-    };
+            }
+          }
+        }
+      }
+    }
   };
 
   window.onmouseup = (e) => {
