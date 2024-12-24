@@ -1,7 +1,9 @@
 import useReposition from './useReposition';
+import useResize from './useResize';
 
 const hook = {
-	useReposition
+	useReposition,
+	useResize
 };
 
 export default hook;
