@@ -4,6 +4,8 @@ import { AppContextInterface } from '../types';
 
 function Taskbar() {
 	const {
+		startOpen,
+		setStartOpen,
 		openArr,
 		activeArr,
 		show,
@@ -45,7 +47,10 @@ function Taskbar() {
 				<li>
 					<button
 						className='px-4 bg-white'
-					>START</button>
+						onClick={() => setStartOpen(!startOpen)}
+					>
+						START
+					</button>
 				</li>
 				{createTabs(openArr)}
 			</ul>

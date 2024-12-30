@@ -1,5 +1,6 @@
 import App from './App';
 import Display from './Display';
+import StartMenu from './StartMenu';
 import Taskbar from './Taskbar';
 import Window from './Window';
 import ProjectFile from './file-templates/ProjectFile';
@@ -11,7 +12,8 @@ const component = {
 	Taskbar,
 	Window,
 	ProjectFile,
-	TextFile
+	TextFile,
+	StartMenu
 };
 
 export default component;

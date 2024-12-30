@@ -3,6 +3,7 @@ import component from './component';
 import { AppContext } from '../context';
 
 function App() {
+	const [startOpen, setStartOpen] = useState<boolean>(false);
 	const [openArr, setOpenArr] = useState<string[]>([]);
 	const [visibleArr, setVisibleArr] = useState<string[]>([]);
 	const [activeArr, setActiveArr] = useState<string[]>([]);
@@ -37,6 +38,8 @@ function App() {
 	};
 
 	const contextValues = {
+		startOpen,
+		setStartOpen,
 		openArr,
 		visibleArr,
 		activeArr,

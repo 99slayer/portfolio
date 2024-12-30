@@ -25,6 +25,8 @@ interface TextFileData {
 export type FileData = ProjectFileData | TextFileData;
 
 export interface AppContextInterface {
+	startOpen: boolean;
+	setStartOpen: React.Dispatch<React.SetStateAction<boolean>>;
 	openArr: string[];
 	visibleArr: string[];
 	activeArr: string[];
