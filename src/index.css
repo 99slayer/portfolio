@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+	* {
+		font-family: "Micro 5", 'tiny5', serif;
+		font-weight: 500;
+		font-style: normal;
+	}
+
+	html {
+		font-size: 22px;
+		line-height: 22px;
+	}
+}
+
 * {
 	-webkit-user-select: none; /* Safari */
 	-ms-user-select: none; /* IE 10 and IE 11 */
