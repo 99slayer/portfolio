@@ -54,20 +54,20 @@ function Display() {
 					<button
 						className='p-2 bg-gray-400'
 						onClick={() => {
-							const name = 'window-1';
+							const name = 'text-window';
 							open(name);
 						}}
 					>
-						window-1
+						text-window
 					</button>
 					<button
 						className='p-2 bg-gray-400'
 						onClick={() => {
-							const name = 'window-2';
+							const name = 'project-window';
 							open(name);
 						}}
 					>
-						window-2
+						project-window
 					</button>
 				</div>
 				{createWindows(openArr)}

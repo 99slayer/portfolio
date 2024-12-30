@@ -8,9 +8,21 @@ export interface Size {
 	height: number;
 }
 
-export interface FileInfo {
+interface ProjectFileData {
 	name: string;
+	type: 'Project';
+	description: string;
+	links: { name: string, link: string }[];
+	images: string[];
 }
+
+interface TextFileData {
+	name: string;
+	type: 'Text';
+	text: string;
+}
+
+export type FileData = ProjectFileData | TextFileData;
 
 export interface AppContextInterface {
 	openArr: string[];

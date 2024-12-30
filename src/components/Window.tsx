@@ -10,9 +10,11 @@ import {
 	AppContextInterface,
 	Coordinates,
 	Size,
-	FileInfo
+	FileData,
+	DisplayContextInterface
 } from '../types';
-import { AppContext } from '../context';
+import component from './component';
+import { AppContext, DisplayContext } from '../context';
 import files from '../files';
 
 function Window({ name }: { name: string }) {
@@ -23,17 +25,18 @@ function Window({ name }: { name: string }) {
 		hide,
 		setActive
 	} = useContext(AppContext) as AppContextInterface;
+	const { displaySize } = useContext(DisplayContext) as DisplayContextInterface;
 	const { reposition } = hook.useReposition();
 	const { resize } = hook.useResize();
 	const ref: React.RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
-	const [windowData, setWindowData] = useState<FileInfo | null>(null);
+	const [windowData, setWindowData] = useState<FileData | null>(null);
 	const [size, setSize] = useState<Size>({
-		width: 300,
-		height: 300
+		width: displaySize.width >= 1000 ? 500 : 300,
+		height: 600
 	});
 	const [position, setPosition] = useState({
-		x: 0,
-		y: 0
+		x: displaySize.width / 2 - size.width / 2,
+		y: 100
 	});
 
 	useLayoutEffect(() => {
@@ -44,7 +47,7 @@ function Window({ name }: { name: string }) {
 	}, []);
 
 	useEffect(() => {
-		const data: FileInfo | undefined = files.find((x) => {
+		const data: FileData | undefined = files.find((x) => {
 			return x.name === name;
 		});
 
@@ -53,9 +56,35 @@ function Window({ name }: { name: string }) {
 		setWindowData(data);
 	}, [name]);
 
+	function createContent(data: FileData | null) {
+		if (!data) return;
+		let element;
+
+		switch (data.type) {
+			case 'Text':
+				element = <component.TextFile
+					text={data.text}
+				/>;
+				break;
+
+			case 'Project':
+				element = <component.ProjectFile
+					desc={data.description}
+					links={data.links}
+					images={data.images}
+				/>;
+				break;
+
+			default:
+				break;
+		}
+
+		return element;
+	}
+
 	return (
 		<section
-			className='p-1 flex absolute bg-gray-700'
+			className='p-[2px] flex absolute bg-gray-700'
 			ref={ref}
 			style={{
 				top: `${position.y}px`,
@@ -115,7 +144,7 @@ function Window({ name }: { name: string }) {
 					<div
 						className='flex-1 p-2 flex bg-gray-300 overflow-y-auto'
 					>
-						{/* {CONTENT} */}
+						{createContent(windowData)}
 					</div>
 				</div>
 				<div
