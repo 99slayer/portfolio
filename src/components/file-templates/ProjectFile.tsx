@@ -27,7 +27,7 @@ function ProjectFile(
 
 	return (
 		<div
-			className='flex flex-col gap-2'
+			className='flex flex-col gap-2 bg-theme-primary'
 		>
 			<ImageSlider images={images} />
 			<div className='text-xl'>{desc}</div>

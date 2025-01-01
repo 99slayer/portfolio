@@ -9,7 +9,7 @@ function TextFile({ text }: { text: string }) {
 			className='flex-1'
 		>
 			<textarea
-				className='min-w-[100%] min-h-[100%] px-2 outline-none bg-gray-300'
+				className='min-w-[100%] min-h-[100%] px-2 outline-none bg-theme-primary'
 				style={{ resize: 'none' }}
 				ref={ref}
 				defaultValue={tempText ?? text}

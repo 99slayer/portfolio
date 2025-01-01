@@ -3,7 +3,9 @@ import component from './component';
 import { AppContext } from '../context';
 
 function App() {
+	const themes = ['default', '2', '3', '4'];
 	const [startOpen, setStartOpen] = useState<boolean>(false);
+	const [theme, setTheme] = useState<string>(themes[0]);
 	const [openArr, setOpenArr] = useState<string[]>([]);
 	const [visibleArr, setVisibleArr] = useState<string[]>([]);
 	const [activeArr, setActiveArr] = useState<string[]>([]);
@@ -37,7 +39,7 @@ function App() {
 		setActiveArr(copy);
 	};
 
-	const contextValues = {
+	const appContextValues = {
 		startOpen,
 		setStartOpen,
 		openArr,
@@ -51,8 +53,10 @@ function App() {
 	};
 
 	return (
-		<AppContext.Provider value={contextValues}>
-			<div className='min-h-screen flex'>
+		<AppContext.Provider value={appContextValues}>
+			<div
+				className={`min-h-screen flex theme-${theme} text-theme-text`}
+			>
 				<div className='flex-1 flex flex-col'>
 					<component.Display />
 					<component.Taskbar />

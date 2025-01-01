@@ -47,12 +47,12 @@ function Display() {
 	return (
 		<DisplayContext.Provider value={{ displaySize }}>
 			<div
-				className='flex-1 p-2 relative flex bg-white'
+				className='flex-1 p-2 relative flex bg-theme-background'
 				ref={ref}
 			>
 				<div className='flex-1 flex items-start gap-2'>
 					<button
-						className='p-2 bg-gray-400'
+						className='p-2 bg-theme-button'
 						onClick={() => {
 							const name = 'text-window';
 							open(name);
@@ -61,7 +61,7 @@ function Display() {
 						text-window
 					</button>
 					<button
-						className='p-2 bg-gray-400'
+						className='p-2 bg-theme-button'
 						onClick={() => {
 							const name = 'project-window';
 							open(name);

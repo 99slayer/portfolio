@@ -84,7 +84,7 @@ function Window({ name }: { name: string }) {
 
 	return (
 		<section
-			className='p-[2px] flex absolute bg-gray-700'
+			className='p-[2px] flex absolute bg-theme-secondary'
 			ref={ref}
 			style={{
 				top: `${position.y}px`,
@@ -99,9 +99,11 @@ function Window({ name }: { name: string }) {
 			<div className='flex-1 flex relative'>
 				<div className='flex-1 flex flex-col'>
 					<div
-						className='px-2 flex items-center bg-white hover:cursor-grab'
+						className='px-2 flex items-center bg-theme-highlight hover:cursor-grab'
 						style={{
-							backgroundColor: `${activeArr[activeArr.length - 1] === name ? 'white' : 'gray'}`
+							backgroundColor: `${activeArr[activeArr.length - 1] === name ?
+								'var(--color-highlight)' :
+								'var(--color-lowlight)'}`
 						}}
 						onMouseDown={(e) => {
 							(e.target as HTMLDivElement).style.cursor = 'grabbing';
@@ -124,7 +126,7 @@ function Window({ name }: { name: string }) {
 						<p>{name}</p>
 						<div className='ml-auto flex gap-2'>
 							<button
-								className='w-[20px] h-[20px] flex justify-center items-center text-white bg-red-500'
+								className='w-[20px] h-[20px] flex justify-center items-center bg-theme-button'
 								onClick={() => {
 									hide(name);
 								}}
@@ -132,7 +134,7 @@ function Window({ name }: { name: string }) {
 								_
 							</button>
 							<button
-								className='w-[20px] h-[20px] flex justify-center items-center text-white bg-red-500'
+								className='w-[20px] h-[20px] flex justify-center items-center bg-theme-button'
 								onClick={() => {
 									close(name);
 								}}
@@ -141,14 +143,12 @@ function Window({ name }: { name: string }) {
 							</button>
 						</div>
 					</div>
-					<div
-						className='flex-1 p-2 flex bg-gray-300 overflow-y-auto'
-					>
+					<div className='flex-1 p-2 flex overflow-y-auto bg-theme-primary'>
 						{createContent(windowData)}
 					</div>
 				</div>
 				<div
-					className='w-[30px] h-[30px] absolute bottom-0 right-0 border-r-2 border-b-2 border-transparent hover:cursor-nwse-resize bg-[linear-gradient(135deg,_#FFFFFF00_65%,_#374151_65%)]'
+					className='w-[30px] h-[30px] absolute bottom-0 right-0 border-r-2 border-b-2 border-transparent hover:cursor-nwse-resize bg-[linear-gradient(135deg,_#FFFFFF00_70%,_var(--color-secondary)_70%)]'
 					onMouseDown={(e) => {
 						let mouseDown = true;
 						const initClick = {

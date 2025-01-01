@@ -23,7 +23,7 @@ function Taskbar() {
 				<li
 					className='px-4 flex'
 					style={{
-						backgroundColor: `${active ? 'white' : 'gray'}`
+						backgroundColor: `${active ? 'var(--color-highlight)' : 'var(--color-lowlight)'}`
 					}}
 					key={name}
 					onClick={() => {
@@ -42,11 +42,11 @@ function Taskbar() {
 	}
 
 	return (
-		<div className='h-[30px] px-1 flex gap-1 bg-gray-400'>
+		<div className='h-[30px] px-1 flex gap-1 bg-theme-primary'>
 			<ul className='flex items-center gap-1'>
 				<li>
 					<button
-						className='px-4 bg-white'
+						className='px-4 bg-theme-button'
 						onClick={() => setStartOpen(!startOpen)}
 					>
 						START

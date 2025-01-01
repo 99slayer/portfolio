@@ -15,10 +15,10 @@ function StartMenu() {
 			onMouseLeave={() => setStartOpen(false)}
 		>
 			<div
-				className='p-[1px] flex flex-col gap-[1px] bg-slate-400'
+				className='p-[1px] flex flex-col gap-[1px] bg-theme-primary'
 			>
 				<button
-					className='flex bg-slate-300 hover:bg-slate-500'
+					className='flex bg-theme-button hover:bg-theme-highlight'
 				>
 					<a
 						className='px-6 flex-1'
@@ -30,7 +30,7 @@ function StartMenu() {
 					</a>
 				</button>
 				<button
-					className='flex bg-slate-300 hover:bg-slate-500'
+					className='flex bg-theme-button hover:bg-theme-highlight'
 				>
 					<a
 						className='px-6 flex-1'
@@ -42,7 +42,7 @@ function StartMenu() {
 					</a>
 				</button>
 				<button
-					className='flex bg-slate-300 hover:bg-slate-500'
+					className='flex bg-theme-button hover:bg-theme-highlight'
 				>
 					<a
 						className='px-6 flex-1'
@@ -54,7 +54,7 @@ function StartMenu() {
 					</a>
 				</button>
 				<button
-					className='flex bg-slate-300 hover:bg-slate-500'
+					className='flex bg-theme-button hover:bg-theme-highlight'
 				>
 					<a
 						className='px-6 flex-1'

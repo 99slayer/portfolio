@@ -2,9 +2,61 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+	:root {
+		--color-text: #414141;
+		--color-background: #ffffff;
+		--color-primary: #646666;
+		--color-secondary: #535353;
+		--color-button: #bbbbbb;
+		--color-highlight: #ffffff;
+		--color-lowlight: #848484;
+	}
+}
+
+.theme-default {
+		--color-text: #414141;
+		--color-background: #ffffff;
+		--color-primary: #646666;
+		--color-secondary: #535353;
+		--color-button: #bbbbbb;
+		--color-highlight: #ffffff;
+		--color-lowlight: #848484;
+}
+
+.theme-2 {
+	--color-text: #AF2BBF;
+	--color-background: #A14EBF;
+	--color-primary: #6C91BF;
+	--color-secondary: var(--color-text);
+	--color-button: #5BC8AF;
+	--color-highlight: #49F6FF;
+	--color-lowlight: #4bbcc2;
+}
+
+.theme-3 {
+	--color-text: #4059AD;
+	--color-background: #97D8C4;
+	--color-primary: #6B9AC4;
+	--color-secondary: #EFF2F1;
+	--color-button: #F4B942;
+	--color-highlight: var(--color-secondary);
+	--color-lowlight: var(--color-primary);
+}
+
+.theme-4 {
+	--color-text: #392F5A;
+	--color-background: #F4D06F;
+	--color-primary: #9DD9D2;
+	--color-secondary: var(--color-text);
+	--color-button: #FF8811;
+	--color-highlight: #ffce49;
+	--color-lowlight: #dbad2e;
+}
+
 @layer components {
 	* {
-		font-family: "Micro 5", 'tiny5', serif;
+		font-family: 'Micro 5', 'tiny5', serif;
 		font-weight: 500;
 		font-style: normal;
 	}
