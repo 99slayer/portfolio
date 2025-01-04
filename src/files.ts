@@ -19,6 +19,10 @@ const files: FileData[] = [
 			'./images/project-1/eye.jpg',
 			'./images/project-1/lollipop-cat.png'
 		]
+	},
+	{
+		name: 'theme-switcher',
+		type: 'ThemeSwitcher'
 	}
 ];
 

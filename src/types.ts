@@ -22,11 +22,19 @@ interface TextFileData {
 	text: string;
 }
 
-export type FileData = ProjectFileData | TextFileData;
+interface ThemeSwitcher {
+	name: string;
+	type: 'ThemeSwitcher';
+}
+
+export type FileData = ProjectFileData | TextFileData | ThemeSwitcher;
 
 export interface AppContextInterface {
+	themes: string[];
 	startOpen: boolean;
 	setStartOpen: React.Dispatch<React.SetStateAction<boolean>>;
+	theme: string;
+	setTheme: React.Dispatch<React.SetStateAction<string>>;
 	openArr: string[];
 	visibleArr: string[];
 	activeArr: string[];

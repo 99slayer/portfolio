@@ -3,7 +3,7 @@ import component from './component';
 import { AppContext } from '../context';
 
 function App() {
-	const themes = ['default', '2', '3', '4'];
+	const themes = ['default', '2', '3', '4',];
 	const [startOpen, setStartOpen] = useState<boolean>(false);
 	const [theme, setTheme] = useState<string>(themes[0]);
 	const [openArr, setOpenArr] = useState<string[]>([]);
@@ -40,8 +40,11 @@ function App() {
 	};
 
 	const appContextValues = {
+		themes,
 		startOpen,
 		setStartOpen,
+		theme,
+		setTheme,
 		openArr,
 		visibleArr,
 		activeArr,

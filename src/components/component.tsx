@@ -5,6 +5,7 @@ import Taskbar from './Taskbar';
 import Window from './Window';
 import ProjectFile from './file-templates/ProjectFile';
 import TextFile from './file-templates/TextFile';
+import ThemeSwitcher from './file-templates/ThemeSwitcher';
 
 const component = {
 	App,
@@ -13,7 +14,8 @@ const component = {
 	Window,
 	ProjectFile,
 	TextFile,
-	StartMenu
+	StartMenu,
+	ThemeSwitcher
 };
 
 export default component;

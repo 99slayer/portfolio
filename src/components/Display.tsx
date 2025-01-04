@@ -71,6 +71,8 @@ function Display() {
 					</button>
 				</div>
 				{createWindows(openArr)}
+
+				<component.ThemeSwitcher />
 				<component.StartMenu />
 			</div>
 		</DisplayContext.Provider>
