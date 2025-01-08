@@ -34,9 +34,16 @@ function App() {
 	const setActive = (name: string) => {
 		const copy = [...activeArr];
 		const index = activeArr.indexOf(name);
-		copy.splice(index, 1);
-		copy.push(name);
-		setActiveArr(copy);
+
+		if (index < 0) {
+			copy.push(name);
+			setActiveArr(copy);
+			return;
+		} else {
+			copy.splice(index, 1);
+			copy.push(name);
+			setActiveArr(copy);
+		}
 	};
 
 	const appContextValues = {
