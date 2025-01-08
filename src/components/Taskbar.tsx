@@ -7,8 +7,10 @@ function Taskbar() {
 		startOpen,
 		setStartOpen,
 		openArr,
+		visibleArr,
 		activeArr,
 		show,
+		hide,
 		setActive
 	} = useContext(AppContext) as AppContextInterface;
 
@@ -27,8 +29,14 @@ function Taskbar() {
 					}}
 					key={name}
 					onClick={() => {
-						show(name);
-						setActive(name);
+						if (activeArr[activeArr.length - 1] !== name && visibleArr.includes(name)) {
+							setActive(name);
+						} else if (visibleArr.includes(name)) {
+							hide(name);
+						} else {
+							show(name);
+							setActive(name);
+						}
 					}}
 				>
 					<button className='flex-1'>
