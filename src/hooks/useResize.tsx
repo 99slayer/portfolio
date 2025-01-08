@@ -3,6 +3,8 @@ import { DisplayContext } from '../context';
 import { Coordinates, DisplayContextInterface, Size } from '../types';
 
 function useResize() {
+	const minWidth: number = 280;
+	const minHeight: number = 120;
 	const { displaySize } = useContext(DisplayContext) as DisplayContextInterface;
 
 	const resize = useCallback((
@@ -22,6 +24,9 @@ function useResize() {
 		if (newSize.width + position.x > displaySize.width) {
 			newSize.width = displaySize.width - position.x;
 		}
+
+		if (newSize.width <= minWidth) newSize.width = minWidth;
+		if (newSize.height <= minHeight) newSize.height = minHeight;
 
 		return newSize;
 	}, [displaySize]);
