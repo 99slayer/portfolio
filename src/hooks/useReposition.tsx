@@ -12,8 +12,8 @@ function useReposition() {
 		windowSize: Size
 	) => {
 		const difference: Coordinates = {
-			x: e.pageX - initialClick.x,
-			y: e.pageY - initialClick.y
+			x: Math.min(e.pageX, displaySize.width) - initialClick.x,
+			y: Math.min(e.pageY, displaySize.height) - initialClick.y
 		};
 
 		const newPosition: Coordinates = {
