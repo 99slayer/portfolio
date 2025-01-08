@@ -27,7 +27,7 @@ function ProjectFile(
 
 	return (
 		<div
-			className='flex flex-col gap-2 bg-theme-primary'
+			className='flex-1 flex flex-col items-center gap-2 bg-theme-primary'
 		>
 			<ImageSlider images={images} />
 			<div className='text-xl'>{desc}</div>
@@ -43,32 +43,34 @@ function ImageSlider({ images }: { images: string[] }) {
 
 	return (
 		<div
-			className='flex items-center gap-2'
+			className='max-w-[600px] py-2 flex gap-1 justify-center items-center'
 		>
 			<button
-				className='justify-self-start w-[20px] h-[20px] p-1 flex justify-center items-center text-xl'
 				onClick={() => {
 					if (num - 1 < 0) {
 						setNum(images.length - 1);
 					} else setNum(num - 1);
 				}}
 			>
-				{'<'}
+				<span className='material-symbols-outlined size-5 flex justify-center items-center text-3xl bg-theme-button'>
+					arrow_left
+				</span>
 			</button>
 
-			<div className='justify-self-center'>
-				<img src={images[num]} />
+			<div className='flex justify-center items-center'>
+				<img className='h-[100%] object-contain' src={images[num]} />
 			</div>
 
 			<button
-				className='justify-self-end w-[20px] h-[20px] p-1 flex justify-center items-center text-xl'
 				onClick={() => {
 					if (num + 1 > images.length - 1) {
 						setNum(0);
 					} else setNum(num + 1);
 				}}
 			>
-				{'>'}
+				<span className='material-symbols-outlined size-5 flex justify-center items-center text-3xl bg-theme-button'>
+					arrow_right
+				</span>
 			</button>
 		</div>
 	);

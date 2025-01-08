@@ -3,6 +3,7 @@ import { AppContext } from '../../context';
 import { AppContextInterface } from '../../types';
 
 function ThemeSwitcher() {
+	const height: number = 287;
 	const {
 		themes,
 		theme,
@@ -10,7 +11,6 @@ function ThemeSwitcher() {
 	} = useContext(AppContext) as AppContextInterface;
 	const ref = useRef<HTMLDivElement | null>(null);
 	const [open, setOpen] = useState<boolean>(false);
-	const width = '295';
 
 	function createThemeButtons(arr: string[]) {
 		const buttons = [];
@@ -33,7 +33,7 @@ function ThemeSwitcher() {
 
 		const div =
 			<div
-				className='p-2 flex flex-col gap-2 bg-theme-primary'
+				className='px-2 pt-2 pb-[3px] flex flex-col gap-2 bg-theme-primary'
 				ref={ref}
 			>
 				{buttons}
@@ -46,14 +46,17 @@ function ThemeSwitcher() {
 		<div
 			className='flex flex-col absolute right-1 top-0 transition-transform'
 			style={{
-				transform: `translateY(${open ? '0' : '-' + width}px)`
+				transform: `translateY(${open ? '0' : '-' + height}px)`
 			}}
+			onMouseLeave={() => setOpen(false)}
 		>
 			{createThemeButtons(themes)}
 			<button
-				className='h-[38px] rounded-br-[30px_20px] rounded-bl-[30px_20px] bg-theme-button'
+				className='h-[82px] flex justify-center items-center rounded-br-[30px_20px] rounded-bl-[30px_20px] bg-theme-primary'
 				onClick={() => setOpen(!open)}
-			></button>
+			>
+				<img className='w-[74px] h-[74px] object-contain' src='./icons/px-paint-can.png' alt='' />
+			</button>
 		</div>
 	);
 }

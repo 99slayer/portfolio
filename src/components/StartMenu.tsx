@@ -10,7 +10,7 @@ function StartMenu() {
 
 	return (
 		<div
-			className='pt-[10px] pr-[10px] absolute left-0 bottom-0 text-[30px] leading-[30px]'
+			className='pt-[10px] pr-[10px] absolute left-0 bottom-0 text-[30px] leading-[30px] z-50'
 			style={{ display: startOpen ? 'flex' : 'none' }}
 			onMouseLeave={() => setStartOpen(false)}
 		>

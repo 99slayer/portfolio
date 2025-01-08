@@ -84,7 +84,7 @@ function Window({ name }: { name: string }) {
 
 	return (
 		<section
-			className='p-[2px] flex absolute bg-theme-secondary'
+			className='p-1 flex absolute bg-theme-secondary'
 			ref={ref}
 			style={{
 				top: `${position.y}px`,
@@ -96,10 +96,10 @@ function Window({ name }: { name: string }) {
 			}}
 			onMouseDown={() => setActive(name)}
 		>
-			<div className='flex-1 flex relative'>
-				<div className='flex-1 flex flex-col'>
+			<div className='min-w-[200px] flex-1 flex relative'>
+				<div className='min-w-[200px] flex-1 flex flex-col gap-1'>
 					<div
-						className='px-2 flex items-center bg-theme-highlight hover:cursor-grab'
+						className='px-2 py-[2px] flex justify-between items-center gap-1 bg-theme-background hover:cursor-grab'
 						style={{
 							backgroundColor: `${activeArr[activeArr.length - 1] === name ?
 								'var(--color-highlight)' :
@@ -114,6 +114,17 @@ function Window({ name }: { name: string }) {
 							};
 							window.onmousemove = (e: MouseEvent) => {
 								if (!mouseDown) return;
+								if (size.width >= displaySize.width) {
+									const newSize = { width: 500, height: 700 };
+									const pos = { x: initClick.x, y: initClick.y };
+
+									const newPosition: Coordinates = reposition(e, initClick, pos, newSize);
+									setSize(newSize);
+									setPosition(newPosition);
+									(e.target as HTMLDivElement).style.cursor = '';
+									return;
+								}
+
 								const newPosition: Coordinates = reposition(e, initClick, position, size);
 								setPosition(newPosition);
 							};
@@ -123,10 +134,11 @@ function Window({ name }: { name: string }) {
 							};
 						}}
 					>
-						<p>{name}</p>
-						<div className='ml-auto flex gap-2'>
+						<p className='truncate capitalize'>{name}</p>
+						<div className='flex gap-1'>
 							<button
-								className='w-[20px] h-[20px] flex justify-center items-center bg-theme-button'
+								className='w-[26px] h-[18px] flex justify-center items-center bg-theme-button'
+								onMouseDown={(e) => e.stopPropagation()}
 								onClick={() => {
 									hide(name);
 								}}
@@ -134,7 +146,24 @@ function Window({ name }: { name: string }) {
 								_
 							</button>
 							<button
-								className='w-[20px] h-[20px] flex justify-center items-center bg-theme-button'
+								className='w-[26px] h-[18px] flex justify-center items-center bg-theme-button'
+								onMouseDown={(e) => e.stopPropagation()}
+								onClick={() => {
+									setSize({
+										width: displaySize.width,
+										height: displaySize.height
+									});
+									setPosition({
+										x: 0,
+										y: 0
+									});
+								}}
+							>
+								[]
+							</button>
+							<button
+								className='w-[26px] h-[18px] flex justify-center items-center bg-theme-button'
+								onMouseDown={(e) => e.stopPropagation()}
 								onClick={() => {
 									close(name);
 								}}

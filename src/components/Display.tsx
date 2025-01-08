@@ -52,26 +52,27 @@ function Display() {
 			>
 				<div className='flex-1 flex items-start gap-2'>
 					<button
-						className='p-2 bg-theme-button'
 						onClick={() => {
 							const name = 'text-window';
 							open(name);
 						}}
 					>
-						text-window
+						<img className='w-auto h-20' src='./icons/dank_laugh.png' alt='' />
 					</button>
 					<button
-						className='p-2 bg-theme-button'
 						onClick={() => {
 							const name = 'project-window';
 							open(name);
 						}}
 					>
-						project-window
+						<img className='size-20' src='./icons/px-bird.png' alt='' />
+					</button>
+					<button>
+						<img className='size-20' src='./icons/px-cog.png' alt='' />
 					</button>
 				</div>
-				{createWindows(openArr)}
 
+				{createWindows(openArr)}
 				<component.ThemeSwitcher />
 				<component.StartMenu />
 			</div>
