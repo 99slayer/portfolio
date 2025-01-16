@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AppContext } from '../context';
 import { AppContextInterface } from '../types';
 
@@ -13,6 +13,7 @@ function Taskbar() {
 		hide,
 		setActive
 	} = useContext(AppContext) as AppContextInterface;
+	const [clicked, setClicked] = useState<boolean>(false);
 
 	function createTabs(arr: string[]) {
 		const tabs = [];
@@ -23,7 +24,7 @@ function Taskbar() {
 
 			tabs.push(
 				<li
-					className='px-4 flex'
+					className='py-[3px] px-4 flex'
 					style={{
 						backgroundColor: `${active ? 'var(--color-highlight)' : 'var(--color-lowlight)'}`
 					}}
@@ -50,16 +51,16 @@ function Taskbar() {
 	}
 
 	return (
-		<div className='h-[30px] px-1 flex gap-1 bg-theme-primary'>
-			<ul className='flex items-center gap-1'>
-				<li>
-					<button
-						className='px-4 bg-theme-button'
-						onClick={() => setStartOpen(!startOpen)}
-					>
-						START
-					</button>
-				</li>
+		<div className='flex items-end'>
+			<button
+				className='size-14 p-[2px] flex justify-center items-center rounded-t-full bg-theme-primary'
+				onClick={() => setStartOpen(!startOpen)}
+				onMouseDown={() => setClicked(true)}
+				onMouseUp={() => setClicked(false)}
+			>
+				<img src={clicked ? './icons/start-clicked.png' : './icons/start.png'} alt='' />
+			</button>
+			<ul className='h-[40px] flex-1 px-1 flex items-center gap-1 bg-theme-primary'>
 				{createTabs(openArr)}
 			</ul>
 		</div>

@@ -10,57 +10,47 @@ function StartMenu() {
 
 	return (
 		<div
-			className='pt-[10px] pr-[10px] absolute left-0 bottom-0 text-[30px] leading-[30px] z-50'
+			className='pt-[10px] pr-[10px] pb-2 absolute left-0 bottom-0 text-[30px] leading-[30px] z-50'
 			style={{ display: startOpen ? 'flex' : 'none' }}
 			onMouseLeave={() => setStartOpen(false)}
 		>
 			<div
-				className='p-[1px] flex flex-col gap-[1px] bg-theme-primary'
+				className='px-2 flex gap-2'
 			>
 				<button
-					className='flex bg-theme-button hover:bg-theme-highlight'
+					className='flex justify-center items-center'
 				>
 					<a
-						className='px-6 flex-1'
+						className='size-[60px] flex-1'
 						href=''
 						target='_blank'
 						rel='noopener noreferrer'
 					>
-						link-1
+						<img src='./icons/github-icon.png' alt='' />
 					</a>
 				</button>
 				<button
-					className='flex bg-theme-button hover:bg-theme-highlight'
+					className='flex justify-center items-center'
 				>
 					<a
-						className='px-6 flex-1'
+						className='size-[60px] flex-1'
 						href=''
 						target='_blank'
 						rel='noopener noreferrer'
 					>
-						link-2
+						<img src='./icons/LinkedIn.png' alt='' />
 					</a>
 				</button>
 				<button
-					className='flex bg-theme-button hover:bg-theme-highlight'
+					className='flex justify-center items-center'
 				>
 					<a
-						className='px-6 flex-1'
+						className='size-[60px] flex-1'
 						href=''
 						target='_blank'
 						rel='noopener noreferrer'
 					>
-						link-3
-					</a>
-				</button>
-				<button
-					className='flex bg-theme-button hover:bg-theme-highlight'
-				>
-					<a
-						className='px-6 flex-1'
-						href=''
-					>
-						link-4
+						<img src='./icons/x-icon.png' alt='' />
 					</a>
 				</button>
 			</div>

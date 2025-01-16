@@ -99,7 +99,7 @@ function Window({ name }: { name: string }) {
 			<div className='min-w-[200px] flex-1 flex relative'>
 				<div className='min-w-[200px] flex-1 flex flex-col gap-1'>
 					<div
-						className='px-2 py-[2px] flex justify-between items-center gap-1 bg-theme-background hover:cursor-grab'
+						className='px-2 py-[2px] flex items-center gap-1 bg-theme-background hover:cursor-grab'
 						style={{
 							backgroundColor: `${activeArr[activeArr.length - 1] === name ?
 								'var(--color-highlight)' :
@@ -134,8 +134,17 @@ function Window({ name }: { name: string }) {
 							};
 						}}
 					>
+						<img
+							className='size-4'
+							src={
+								windowData?.type === 'Text' ?
+									'./icons/text-file-icon.png' :
+									'./icons/project-file-icon.png'
+							}
+							alt=''
+						/>
 						<p className='truncate capitalize'>{name}</p>
-						<div className='flex gap-1'>
+						<div className='ml-auto flex gap-1'>
 							<button
 								className='w-[26px] h-[18px] flex justify-center items-center bg-theme-button'
 								onMouseDown={(e) => e.stopPropagation()}
