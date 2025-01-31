@@ -1,11 +1,12 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import component from './component';
 import { AppContext } from '../context';
+import themes from '../themes';
 
 function App() {
-	const themes = ['default', '2', '3', '4',];
+	const taskbarRef = useRef<HTMLUListElement>(null);
 	const [startOpen, setStartOpen] = useState<boolean>(false);
-	const [theme, setTheme] = useState<string>(themes[0]);
+	const [theme, setTheme] = useState<string>(themes[0].name);
 	const [openArr, setOpenArr] = useState<string[]>([]);
 	const [visibleArr, setVisibleArr] = useState<string[]>([]);
 	const [activeArr, setActiveArr] = useState<string[]>([]);
@@ -47,7 +48,7 @@ function App() {
 	};
 
 	const appContextValues = {
-		themes,
+		taskbarRef,
 		startOpen,
 		setStartOpen,
 		theme,
@@ -67,7 +68,12 @@ function App() {
 			<div
 				className={`min-h-screen flex theme-${theme} text-theme-text`}
 			>
-				<div className='flex-1 flex flex-col'>
+				<div
+					className={`flex-1 flex flex-col relative bg-[url(${themes.find(x => x.name === theme)?.bg})] bg-center bg-cover`}
+					style={{
+						backgroundImage: `url(${themes.find(x => x.name === theme)?.bg})`
+					}}
+				>
 					<component.Display />
 					<component.Taskbar />
 				</div>

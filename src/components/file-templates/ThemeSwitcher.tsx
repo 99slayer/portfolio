@@ -1,11 +1,11 @@
 import { useContext, useRef, useState } from 'react';
 import { AppContext } from '../../context';
-import { AppContextInterface } from '../../types';
+import { AppContextInterface, ThemeInterface } from '../../types';
+import themes from '../../themes';
 
 function ThemeSwitcher() {
-	const width: number = 145;
+	const height: number = 203;
 	const {
-		themes,
 		theme,
 		setTheme
 	} = useContext(AppContext) as AppContextInterface;
@@ -13,26 +13,49 @@ function ThemeSwitcher() {
 	const [open, setOpen] = useState<boolean>(false);
 	const [hover, setHover] = useState<boolean>(false);
 
-	function createThemeButtons(arr: string[]) {
+	function createThemeButtons(arr: ThemeInterface[]) {
 		const buttons = [];
 
 		for (let i = 0; i < arr.length; i++) {
-			const x = arr[i];
+			const colorName = arr[i].name;
+			const colors = arr[i].colors;
+
 			buttons.push(
-				<button
-					className={`size-5 flex justify-center items-center rounded-sm ${theme === x ? 'shadow-inset' : 'shadow-outset'}`}
-					key={x}
-					title={x}
-					onClick={() => setTheme(x)}
+				<div
+					className='flex justify-end items-center gap-1 bg-theme-secondary'
+					key={colorName}
 				>
 
-				</button>
+					<button
+						className='flex-1 px-[0.1rem] flex justify-stretch items-stretch bg-theme-primary hover:brightness-[1.1]'
+						style={{
+							backgroundImage: `linear-gradient(10deg, ${colors.primary} 50%, ${colors.secondary} 50%)`,
+							boxShadow: colorName === theme ?
+								'-2px -2px black, -2px 0 black, 0 -2px black' :
+								'0px 2px black, -2px -2px white, 2px -2px white, -2px 0px white, -2px 2px black',
+							color: colors.textColor,
+							textShadow: `${colors.textShadow} 2px -2px`,
+							filter: colorName === theme ? 'brightness(0.95)' : ''
+						}}
+						title={colorName}
+						onClick={() => setTheme(colorName)}
+					>
+						<p
+							className='flex-1 text-xl leading-[1.25rem] text-center'
+							style={{
+								transform: colorName === theme ? 'translateY(4px)' : 'translateY(2px)'
+							}}
+						>
+							{colorName}
+						</p>
+					</button>
+				</div >
 			);
 		}
 
 		const div =
 			<div
-				className='flex gap-2 bg-theme-primary'
+				className='pt-2 flex flex-col gap-[0.4rem]'
 				ref={ref}
 			>
 				{buttons}
@@ -43,25 +66,29 @@ function ThemeSwitcher() {
 
 	return (
 		<div
-			className='py-2 flex items-center gap-2 absolute right-0 top-0 transition-transform'
+			className='pl-4 flex flex-col items-center gap-2 absolute right-0 top-0 transition-transform'
 			style={{
-				transform: `translateX(${open ? '0' : + width}px)`
+				transform: `translateY(${open ? '0' : - height}px)`,
+				zIndex: hover ? '100' : ''
 			}}
 			onMouseLeave={() => {
 				setOpen(false);
 				setHover(false);
 			}}
 		>
+			{createThemeButtons(themes)}
 			<button
 				className='size-12 flex justify-center items-center'
 				title='theme picker'
 				onClick={() => setOpen(!open)}
 				onMouseOver={() => setHover(true)}
 			>
-				<img src={hover ? './gifs/color-wheel.gif' : './icons/color-wheel.png'} alt='' />
+				<img
+					src={hover ? './gifs/color-wheel.gif' : './icons/color-wheel.png'}
+					draggable='false'
+					alt=''
+				/>
 			</button>
-			{createThemeButtons(themes)}
-
 		</div>
 	);
 }

@@ -1,10 +1,11 @@
 import { useCallback, useContext } from 'react';
-import { DisplayContext } from '../context';
-import { Coordinates, DisplayContextInterface, Size } from '../types';
+import { AppContext, DisplayContext } from '../context';
+import { AppContextInterface, Coordinates, DisplayContextInterface, Size } from '../types';
 
 function useResize() {
-	const minWidth: number = 280;
-	const minHeight: number = 120;
+	const minWidth: number = 310;
+	const minHeight: number = 220;
+	const { taskbarRef } = useContext(AppContext) as AppContextInterface;
 	const { displaySize } = useContext(DisplayContext) as DisplayContextInterface;
 
 	const resize = useCallback((
@@ -18,8 +19,8 @@ function useResize() {
 			height: size.height + e.clientY - initClick.y
 		};
 
-		if (newSize.height + position.y > displaySize.height) {
-			newSize.height = displaySize.height - position.y;
+		if (newSize.height + position.y > displaySize.height - taskbarRef.current!.offsetHeight) {
+			newSize.height = displaySize.height - taskbarRef.current!.offsetHeight - position.y;
 		}
 		if (newSize.width + position.x > displaySize.width) {
 			newSize.width = displaySize.width - position.x;

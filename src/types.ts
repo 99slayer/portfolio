@@ -8,6 +8,17 @@ export interface Size {
 	height: number;
 }
 
+export interface ThemeInterface {
+	name: string;
+	colors: {
+		primary: string;
+		secondary: string;
+		textColor: string;
+		textShadow: string;
+	};
+	bg: string;
+}
+
 interface ProjectFileData {
 	name: string;
 	type: 'Project';
@@ -30,7 +41,7 @@ interface ThemeSwitcher {
 export type FileData = ProjectFileData | TextFileData | ThemeSwitcher;
 
 export interface AppContextInterface {
-	themes: string[];
+	taskbarRef: React.RefObject<HTMLUListElement>;
 	startOpen: boolean;
 	setStartOpen: React.Dispatch<React.SetStateAction<boolean>>;
 	theme: string;

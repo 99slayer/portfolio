@@ -1,8 +1,9 @@
 import { useCallback, useContext } from 'react';
-import { DisplayContext } from '../context';
-import { Coordinates, DisplayContextInterface, Size } from '../types';
+import { AppContext, DisplayContext } from '../context';
+import { AppContextInterface, Coordinates, DisplayContextInterface, Size } from '../types';
 
 function useReposition() {
+	const { taskbarRef } = useContext(AppContext) as AppContextInterface;
 	const { displaySize } = useContext(DisplayContext) as DisplayContextInterface;
 
 	const reposition = useCallback((
@@ -26,8 +27,8 @@ function useReposition() {
 		if (newPosition.x > displaySize.width - windowSize.width) {
 			newPosition.x = displaySize.width - windowSize.width;
 		}
-		if (newPosition.y > displaySize.height - windowSize.height) {
-			newPosition.y = displaySize.height - windowSize.height;
+		if (newPosition.y > (displaySize.height - taskbarRef.current!.offsetHeight) - windowSize.height) {
+			newPosition.y = (displaySize.height - taskbarRef.current!.offsetHeight) - windowSize.height;
 		}
 
 		return newPosition;

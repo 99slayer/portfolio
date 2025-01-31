@@ -10,47 +10,56 @@ function StartMenu() {
 
 	return (
 		<div
-			className='pt-[10px] pr-[10px] pb-2 absolute left-0 bottom-0 text-[30px] leading-[30px] z-50'
+			className='pb-16 absolute left-0 bottom-0 text-lg leading-[1.125rem] z-50'
 			style={{ display: startOpen ? 'flex' : 'none' }}
 			onMouseLeave={() => setStartOpen(false)}
 		>
 			<div
-				className='px-2 flex gap-2'
+				className='flex flex-col gap-1'
 			>
 				<button
 					className='flex justify-center items-center'
 				>
 					<a
-						className='size-[60px] flex-1'
+						className='flex-1 p-[.1rem] px-2 flex items-center gap-1 border-[2px] border-l-0 border-black bg-theme-secondary txt-bg-noise'
 						href=''
 						target='_blank'
 						rel='noopener noreferrer'
 					>
-						<img src='./icons/github-icon.png' alt='' />
+						<img
+							className='size-[30px]'
+							src='./icons/github-icon.png' alt='' />
+						<p>GITHUB</p>
 					</a>
 				</button>
 				<button
 					className='flex justify-center items-center'
 				>
 					<a
-						className='size-[60px] flex-1'
+						className='flex-1 p-[.1rem] px-2 flex items-center gap-1 border-[2px] border-l-0 border-black bg-theme-secondary txt-bg-noise'
 						href=''
 						target='_blank'
 						rel='noopener noreferrer'
 					>
-						<img src='./icons/LinkedIn.png' alt='' />
+						<img
+							className='size-[30px]'
+							src='./icons/LinkedIn.png' alt='' />
+						<p>LINKEDIN</p>
 					</a>
 				</button>
 				<button
 					className='flex justify-center items-center'
 				>
 					<a
-						className='size-[60px] flex-1'
+						className='flex-1 p-[.1rem] px-2 flex items-center gap-1 border-[2px] border-l-0 border-black bg-theme-secondary txt-bg-noise'
 						href=''
 						target='_blank'
 						rel='noopener noreferrer'
 					>
-						<img src='./icons/x-icon.png' alt='' />
+						<img
+							className='size-[30px]'
+							src='./icons/x-icon.png' alt='' />
+						<p>X/TWITTER</p>
 					</a>
 				</button>
 			</div>

@@ -5,11 +5,9 @@ function TextFile({ text }: { text: string }) {
 	const [tempText, setTempText] = useState<string | null>(null);
 
 	return (
-		<div
-			className='flex-1'
-		>
+		<div className='flex-1 p-2 pr-3 pb-[20px] bg-theme-secondary horizontal-lines'>
 			<textarea
-				className='min-w-[100%] min-h-[100%] px-2 outline-none bg-theme-primary'
+				className='w-[100%] min-h-[100%] px-1 outline-none bg-transparent'
 				style={{ resize: 'none' }}
 				ref={ref}
 				defaultValue={tempText ?? text}
