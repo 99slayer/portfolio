@@ -61,10 +61,10 @@ function Taskbar() {
 
 	return (
 		<div
-			className='flex absolute left-0 right-0 bottom-0 z-50'
+			className='flex absolute left-0 right-0 bottom-0'
 		>
 			<div
-				className='px-[2px] pt-[2px] bg-[linear-gradient(black_52px,_var(--color-highlight)_52px,_var(--color-highlight)_56px,_var(--color-primary)_56px)] pixel-corners-start-btn'
+				className='px-[2px] pt-[2px] bg-[linear-gradient(black_52px,_var(--color-highlight)_52px,_var(--color-highlight)_56px,_var(--color-primary)_56px)] pixel-corners-start-btn z-50'
 			>
 				<div
 					className='px-[4px] pt-[4px] bg-[linear-gradient(var(--color-highlight)_54px,_var(--color-primary)_54px)] pixel-corners-start-btn'
@@ -76,8 +76,13 @@ function Taskbar() {
 						onMouseUp={() => setClicked(false)}
 					>
 						<img
+							id='start-btn'
 							className='hover:brightness-[1.2]'
-							src={clicked ? './icons/start-clicked.png' : './icons/start.png'}
+							src={
+								clicked ?
+									'./icons/start-clicked.png' :
+									'./icons/start.png'
+							}
 							draggable='false'
 							title='Start button'
 							alt='Start button'
@@ -86,7 +91,7 @@ function Taskbar() {
 				</div>
 			</div>
 			<div
-				className='flex-1 overflow-hidden mt-[50px] pt-[2px] flex bg-black'
+				className='flex-1 overflow-hidden mt-[50px] pt-[2px] flex bg-black z-0'
 			>
 				<ul
 					className='flex-1 min-w-[100%] py-[2px] pr-[8px] flex items-center gap-1 overflow-hidden border-t-[4px] border-t-[var(--color-highlight)] bg-theme-primary'
