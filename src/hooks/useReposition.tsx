@@ -32,7 +32,7 @@ function useReposition() {
 		}
 
 		return newPosition;
-	}, [displaySize]);
+	}, [taskbarRef, displaySize]);
 
 	return { reposition };
 }
