@@ -42,6 +42,7 @@ export type FileData = ProjectFileData | TextFileData | ThemeSwitcher;
 
 export interface AppContextInterface {
 	taskbarRef: React.RefObject<HTMLUListElement>;
+	modalRef: React.RefObject<HTMLDialogElement>;
 	startOpen: boolean;
 	setStartOpen: React.Dispatch<React.SetStateAction<boolean>>;
 	theme: string;

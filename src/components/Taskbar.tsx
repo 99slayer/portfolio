@@ -5,6 +5,7 @@ import { AppContextInterface } from '../types';
 function Taskbar() {
 	const {
 		taskbarRef,
+		modalRef,
 		startOpen,
 		setStartOpen,
 		openArr,
@@ -97,11 +98,21 @@ function Taskbar() {
 					className='flex-1 min-w-[100%] py-[2px] pr-[8px] flex items-center gap-1 overflow-hidden border-t-[4px] border-t-[var(--color-highlight)] bg-theme-primary'
 					ref={taskbarRef}
 				>
-
+					<li className='pr-[3px] pb-[1px] bg-gray-700 pixel-corners-info-btn'>
+						<button
+							className='size-[1.3rem] pt-[3px] pr-[1px] flex justify-center items-center text-white text-xl leading-[1.25rem] bg-blue-500 hover:brightness-[1.15] pixel-corners-info-btn'
+							style={{
+								textShadow: '2px 2px rgb(55 65 81 / var(--tw-bg-opacity, 1))'
+							}}
+							onClick={() => modalRef.current!.showModal()}
+						>
+							i
+						</button>
+					</li>
 					{createTabs(openArr)}
 				</ul>
 			</div>
-		</div>
+		</div >
 	);
 }
 
