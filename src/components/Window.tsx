@@ -108,9 +108,9 @@ function Window({ name }: { name: string }) {
 					<div className='flex-1 flex relative'>
 						<div className='flex-1 flex flex-col gap-[6px]'>
 							<div
-								className='flex items-end gap-[6px] hover:cursor-grab'
+								className='flex items-end gap-[6px] hover:cursor-custom-grab'
 								onMouseDown={(e) => {
-									(e.target as HTMLDivElement).style.cursor = 'grabbing';
+									(e.target as HTMLDivElement).classList.add('cursor-custom-grabbing');
 									let mouseDown = true;
 									const initClick: Coordinates = {
 										x: e.pageX,
@@ -124,14 +124,13 @@ function Window({ name }: { name: string }) {
 											const newPosition: Coordinates = reposition(e, initClick, pos, newSize);
 											setSize(newSize);
 											setPosition(newPosition);
-											(e.target as HTMLDivElement).style.cursor = '';
 											return;
 										}
 										const newPosition: Coordinates = reposition(e, initClick, position, size);
 										setPosition(newPosition);
 									};
 									window.onmouseup = (e: MouseEvent) => {
-										(e.target as HTMLDivElement).style.cursor = '';
+										(e.target as HTMLDivElement).classList.remove('cursor-custom-grabbing');
 										mouseDown = false;
 									};
 								}}
@@ -224,11 +223,13 @@ function Window({ name }: { name: string }) {
 							</div>
 						</div>
 						<div
-							className='size-6 absolute bottom-0 right-0 border-r-[12px] border-b-[12px] border-transparent hover:cursor-nwse-resize bg-[linear-gradient(135deg,_#FFFFFF00_76%,_var(--color-highlight)_76%)]'
+							className='size-6 absolute bottom-0 right-0 border-r-[12px] border-b-[12px] border-transparent cursor-custom-grab bg-[linear-gradient(135deg,_#FFFFFF00_76%,_var(--color-highlight)_76%)]'
 							style={{
 								filter: 'brightness(1.2)'
 							}}
 							onMouseDown={(e) => {
+								(e.target as HTMLDivElement).classList.remove('cursor-custom-grab');
+								(e.target as HTMLDivElement).classList.add('cursor-custom-grabbing');
 								let mouseDown = true;
 								const initClick = {
 									x: e.clientX,
@@ -240,6 +241,8 @@ function Window({ name }: { name: string }) {
 									setSize(newSize);
 								};
 								window.onmouseup = () => {
+									(e.target as HTMLDivElement).classList.remove('cursor-custom-grabbing');
+									(e.target as HTMLDivElement).classList.add('cursor-custom-grab');
 									mouseDown = false;
 								};
 							}}

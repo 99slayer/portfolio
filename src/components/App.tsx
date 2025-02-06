@@ -69,7 +69,7 @@ function App() {
 	return (
 		<AppContext.Provider value={appContextValues}>
 			<div
-				className={`min-h-screen flex theme-${theme} text-theme-text`}
+				className={`min-h-screen cursor-custom-default flex theme-${theme} text-theme-text`}
 			>
 				<div
 					className={`flex-1 flex flex-col relative bg-[url(${themes.find(x => x.name === theme)?.bg})] bg-center bg-cover`}

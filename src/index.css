@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+button, a { 
+	cursor: url('./cursors/cursor-default-32.png') 1 3, default;
+}
+
 @layer base {
 	:root {
 		--color-text: #252525;
