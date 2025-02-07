@@ -30,7 +30,7 @@ function useResize() {
 		if (newSize.height <= minHeight) newSize.height = minHeight;
 
 		return newSize;
-	}, [displaySize]);
+	}, [taskbarRef, displaySize]);
 
 	return { resize };
 }
