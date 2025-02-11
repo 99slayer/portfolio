@@ -1,6 +1,5 @@
 import App from './App';
 import Display from './Display';
-import InfoModal from './InfoModal';
 import StartMenu from './StartMenu';
 import Taskbar from './Taskbar';
 import Window from './Window';
@@ -16,8 +15,7 @@ const component = {
 	ProjectFile,
 	TextFile,
 	StartMenu,
-	ThemeSwitcher,
-	InfoModal
+	ThemeSwitcher
 };
 
 export default component;

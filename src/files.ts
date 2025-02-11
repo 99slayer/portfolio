@@ -4,15 +4,35 @@ const files: FileData[] = [
 	{
 		name: 'About Me',
 		type: 'Text',
-		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin blandit tincidunt massa, sit amet congue sem fermentum sit amet. Phasellus lobortis est diam. Donec egestas, quam vel facilisis gravida, metus erat accumsan metus, eu convallis purus nunc in nisi. Nam non mi vel eros venenatis elementum. Aenean laoreet bibendum eros vel aliquam. Pellentesque non nisi sit amet eros consectetur mollis. Praesent sit amet odio eu ligula tempor suscipit non ut sapien. Nunc ut quam orci. Nam tempus commodo dignissim. Mauris sodales sodales lacus nec pellentesque. Pellentesque nec hendrerit sapien. Etiam vel nulla ultricies, dictum ex at, scelerisque purus.'
+		text: `Hello, my name is Joe. I am a fullstack web developer.
+
+I enjoy games, movies, and reading.
+
+My favorite fruit is a tie between mango and pineapple.
+
+Driving around looking cool in my lambo is super fun.
+
+All the ladies want me lmao.`
+	},
+	{
+		name: 'Site Info',
+		type: 'Text',
+		text: `You can think of this website kind of like your desktop.
+		
+- To checkout a project just click its icon.
+		
+- Windows can be dragged around by their headers and resized using a tab at the bottom right.
+
+- Windows can be minimized/maximized and closed using the buttons on their header.`
 	},
 	{
 		name: 'Squawker',
 		type: 'Project',
-		description: 'The Squawker project is super cool!',
+		description: 'This project aims to replicate the core functionality of Twitter/X.',
 		links: [
-			{ name: 'LINK 1', link: 'link-1' },
-			{ name: 'LINK 2', link: 'link-2' }
+			{ name: 'FRONTEND REPO', link: 'https://github.com/99slayer/squawker-client' },
+			{ name: 'BACKEND REPO', link: 'https://github.com/99slayer/squawker-api' },
+			{ name: 'PROJECT DEMO', link: 'https://99slayer.github.io/squawker-client/' }
 		],
 		images: [
 			'./images/project-1/circuit-board.jpg',
@@ -23,24 +43,22 @@ const files: FileData[] = [
 	{
 		name: 'Pig Latin Converter',
 		type: 'Project',
-		description: 'The Pig Latin Converter Project is super cool!',
+		description: 'Converts your text into Pig Latin! Two clicks is all it takes to translate your text and copy the result.',
 		links: [
-			{ name: 'LINK 1', link: 'link-1' },
-			{ name: 'LINK 2', link: 'link-2' }
+			{ name: 'PROJECT REPO', link: 'https://github.com/99slayer/pl-converter' },
+			{ name: 'PROJECT DEMO', link: 'https://99slayer.github.io/pl-converter/' }
 		],
 		images: [
-			'./images/project-1/circuit-board.jpg',
-			'./images/project-1/eye.jpg',
-			'./images/project-1/lollipop-cat.png'
+			'./images/project-pl/pl-converter-1.png'
 		]
 	},
 	{
 		name: 'Memory Game',
 		type: 'Project',
-		description: 'The Memory Game project is super cool!',
+		description: 'A simple memory game. Remember which cards you have already eliminated until there are none left!',
 		links: [
-			{ name: 'LINK 1', link: 'link-1' },
-			{ name: 'LINK 2', link: 'link-2' }
+			{ name: 'PROJECT REPO', link: 'https://github.com/99slayer/odin-memory-card' },
+			{ name: 'PROJECT DEMO', link: 'https://99slayer.github.io/odin-memory-card/' }
 		],
 		images: [
 			'./images/project-1/circuit-board.jpg',

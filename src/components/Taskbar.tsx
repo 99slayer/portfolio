@@ -5,10 +5,10 @@ import { AppContextInterface } from '../types';
 function Taskbar() {
 	const {
 		taskbarRef,
-		modalRef,
 		startOpen,
 		setStartOpen,
 		openArr,
+		open,
 		visibleArr,
 		activeArr,
 		show,
@@ -104,7 +104,7 @@ function Taskbar() {
 							style={{
 								textShadow: '2px 2px rgb(55 65 81 / var(--tw-bg-opacity, 1))'
 							}}
-							onClick={() => modalRef.current!.showModal()}
+							onClick={() => open('Site Info')}
 						>
 							i
 						</button>

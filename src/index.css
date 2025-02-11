@@ -12,6 +12,7 @@ button, a {
 		--color-background: #ffffff;
 		--color-primary: #616161;
 		--color-secondary: #c0c0c0;
+		--color-secondary-transparent: #c0c0c0ce;
 		--color-btn: #bbbbbb;
 		--color-btn-hover: #979797;
 		--color-btn-click: #797979;
@@ -25,6 +26,7 @@ button, a {
 	--color-background: #ffffff;
 	--color-primary: #616161;
 	--color-secondary: #c0c0c0;
+	--color-secondary-transparent: #c0c0c0ce;
 	--color-btn: #bbbbbb;
 	--color-btn-hover: #979797;
 	--color-btn-click: #797979;
@@ -37,6 +39,7 @@ button, a {
 	--color-background: #F7ECE1;
 	--color-primary: #8070C5;
 	--color-secondary: #CAC4CE;
+	--color-secondary-transparent: #CAC4CEce;
 	--color-btn: #8070C5;
 	--color-btn-hover: #7669b6;
 	--color-btn-click: #63589b;
@@ -49,6 +52,7 @@ button, a {
 	--color-background: #1d1d1d;
 	--color-primary: #C20114;
 	--color-secondary: #1d1d1d;
+	--color-secondary-transparent: #1d1d1dce;
 	--color-btn: var(--color-primary);
 	--color-btn-hover: #ac0011;
 	--color-btn-click: #88000e;
@@ -61,6 +65,7 @@ button, a {
 	--color-background: #EAF6FF;
 	--color-primary: #2A2A72;
 	--color-secondary: #81d1ff;
+	--color-secondary-transparent: #81d1ffce;
 	--color-btn: var(--color-highlight);
 	--color-btn-hover: #6363e4;
 	--color-btn-click: #4444d4;
@@ -338,4 +343,19 @@ button, a {
 .horizontal-lines {
     background-image: repeating-linear-gradient(0deg, var(--color-primary), var(--color-secondary) 1px, transparent 0px, transparent 2px);
     background-size: 20px;
+}
+
+.bg {
+  --s: 6px; /* control the size */
+  --g: repeating-conic-gradient(
+		var(--color-highlight) 0 25%, 
+		var(--color-lowlight) 0 50%
+		) 0/;
+  background:
+    var(--g) calc(1*var(--s)) calc(7*var(--s)),
+    var(--g) calc(2*var(--s)) calc(5*var(--s)),
+    var(--g) calc(3*var(--s)) calc(3*var(--s)),
+    var(--g) calc(5*var(--s)) calc(2*var(--s)),
+    var(--g) calc(7*var(--s)) calc(1*var(--s));
+  background-blend-mode: darken;
 }

@@ -1,3 +1,5 @@
+import React from 'react';
+
 export interface Coordinates {
 	x: number;
 	y: number;
@@ -20,6 +22,7 @@ export interface ThemeInterface {
 }
 
 interface ProjectFileData {
+	ref?: React.RefObject<HTMLDivElement>;
 	name: string;
 	type: 'Project';
 	description: string;
@@ -42,7 +45,6 @@ export type FileData = ProjectFileData | TextFileData | ThemeSwitcher;
 
 export interface AppContextInterface {
 	taskbarRef: React.RefObject<HTMLUListElement>;
-	modalRef: React.RefObject<HTMLDialogElement>;
 	startOpen: boolean;
 	setStartOpen: React.Dispatch<React.SetStateAction<boolean>>;
 	theme: string;

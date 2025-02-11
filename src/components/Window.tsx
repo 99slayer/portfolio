@@ -38,7 +38,7 @@ function Window({ name }: { name: string }) {
 	const minHeight: number = 220;
 	const [size, setSize] = useState<Size>({
 		width: Math.max(((displaySize.width >= 900 ? 50 : 70) / 100) * displaySize.width, minWidth),
-		height: Math.max(((displaySize.width >= 700 ? 80 : 60) / 100) * displaySize.height, minHeight)
+		height: Math.max(((displaySize.width >= 700 ? 60 : 50) / 100) * displaySize.height, minHeight)
 	});
 	const [position, setPosition] = useState({
 		x: 20,
@@ -75,6 +75,7 @@ function Window({ name }: { name: string }) {
 
 			case 'Project':
 				element = <component.ProjectFile
+					windowSize={size}
 					desc={data.description}
 					links={data.links}
 					images={data.images}
@@ -110,7 +111,7 @@ function Window({ name }: { name: string }) {
 					<div className='flex-1 flex relative'>
 						<div className='flex-1 flex flex-col gap-[6px]'>
 							<div
-								className='flex items-end gap-[6px] hover:cursor-custom-grab'
+								className='rc flex items-end gap-[6px] cursor-custom-grab'
 								onMouseDown={(e) => {
 									(e.target as HTMLDivElement).classList.add('cursor-custom-grabbing');
 									let mouseDown = true;
@@ -131,8 +132,9 @@ function Window({ name }: { name: string }) {
 										const newPosition: Coordinates = reposition(e, initClick, position, size);
 										setPosition(newPosition);
 									};
-									window.onmouseup = (e: MouseEvent) => {
-										(e.target as HTMLDivElement).classList.remove('cursor-custom-grabbing');
+									window.onmouseup = () => {
+										const cursorElements = document.querySelectorAll('.rc');
+										cursorElements.forEach(el => el.classList.remove('cursor-custom-grabbing'));
 										mouseDown = false;
 									};
 								}}
@@ -158,10 +160,10 @@ function Window({ name }: { name: string }) {
 								</div>
 
 								<div
-									className='flex-1 w-[220px] py-[0.1rem] px-1 flex justify-between items-center border-[4px] border-t-theme-lowlight border-r-theme-highlight border-b-theme-highlight border-l-theme-lowlight bg-theme-secondary horizontal-lines'
+									className='rc flex-1 w-[220px] py-[0.1rem] px-1 flex justify-between items-center border-[4px] border-t-theme-lowlight border-r-theme-highlight border-b-theme-highlight border-l-theme-lowlight bg-theme-secondary horizontal-lines cursor-custom-grab'
 								>
 									<p
-										className={'truncate capitalize'}
+										className={'rc truncate capitalize'}
 										style={{
 											textShadow: '2px 2px var(--color-highlight)'
 										}}
@@ -214,10 +216,10 @@ function Window({ name }: { name: string }) {
 							</div>
 							<div className='flex-1 flex pixel-corners-window'>
 								<div
-									className='flex-1 p-[4px] flex overflow-hidden bg-[linear-gradient(transparent_calc(100%_-_12px),_var(--color-highlight)_calc(100%_-_12px)),_linear-gradient(90deg,_transparent_calc(100%_-_12px),_var(--color-highlight)_calc(100%_-_12px)),_linear-gradient(var(--color-lowlight),_var(--color-lowlight))] pixel-corners-window'
+									className='flex-1 p-[4px] flex bg-[linear-gradient(transparent_calc(100%_-_12px),_var(--color-highlight)_calc(100%_-_12px)),_linear-gradient(90deg,_transparent_calc(100%_-_12px),_var(--color-highlight)_calc(100%_-_12px)),_linear-gradient(var(--color-lowlight),_var(--color-lowlight))] pixel-corners-window'
 								>
 									<div
-										className='flex-1 flex text-[0.8rem] leading-[0.8rem] bg-transparent pixel-corners-window'
+										className='flex-1 flex bg-transparent pixel-corners-window'
 									>
 										{createContent(windowData)}
 									</div>

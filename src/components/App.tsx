@@ -5,7 +5,6 @@ import themes from '../themes';
 
 function App() {
 	const taskbarRef = useRef<HTMLUListElement>(null);
-	const modalRef = useRef<HTMLDialogElement>(null);
 
 	const [startOpen, setStartOpen] = useState<boolean>(false);
 	const [theme, setTheme] = useState<string>(themes[0].name);
@@ -51,7 +50,6 @@ function App() {
 
 	const appContextValues = {
 		taskbarRef,
-		modalRef,
 		startOpen,
 		setStartOpen,
 		theme,
@@ -72,14 +70,10 @@ function App() {
 				className={`min-h-screen cursor-custom-default flex theme-${theme} text-theme-text`}
 			>
 				<div
-					className={`flex-1 flex flex-col relative bg-[url(${themes.find(x => x.name === theme)?.bg})] bg-center bg-cover`}
-					style={{
-						backgroundImage: `url(${themes.find(x => x.name === theme)?.bg})`
-					}}
+					className={'flex-1 flex flex-col relative bg bg-center bg-cover'}
 				>
 					<component.Display />
 					<component.Taskbar />
-					<component.InfoModal />
 				</div>
 			</div>
 		</AppContext.Provider>

@@ -16,6 +16,7 @@ export default {
 					'background': 'var(--color-background)',
 					'primary': 'var(--color-primary)',
 					'secondary': 'var(--color-secondary)',
+					'secondary-transparent': 'var(--color-secondary-transparent)',
 					'button': 'var(--color-btn)',
 					'button-hover': 'var(--color-btn-hover)',
 					'button-click': 'var(--color-btn-click)',
@@ -30,5 +31,7 @@ export default {
 			}
 		},
 	},
-	plugins: [],
+	plugins: [
+		require('@tailwindcss/container-queries')
+	],
 }
