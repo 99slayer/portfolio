@@ -22,7 +22,8 @@ const files: FileData[] = [
 			{ name: 'Project Demo', link: 'https://99slayer.github.io/pl-converter/' }
 		],
 		images: [
-			'./images/project-pl/pl-converter-1.png'
+			'./images/project-pl/pl-1.png',
+			'./images/project-pl/pl-2.png'
 		]
 	},
 	{
@@ -36,9 +37,8 @@ const files: FileData[] = [
 			{ name: 'Project Demo', link: 'https://99slayer.github.io/squawker-client/' }
 		],
 		images: [
-			'./images/project-1/circuit-board.jpg',
-			'./images/project-1/eye.jpg',
-			'./images/project-1/lollipop-cat.png'
+			'./images/project-squawker/squawker-1.png',
+			'./images/project-squawker/squawker-2.png'
 		]
 	},
 	{
@@ -51,9 +51,7 @@ const files: FileData[] = [
 			{ name: 'Project Demo', link: 'https://99slayer.github.io/odin-memory-card/' }
 		],
 		images: [
-			'./images/project-1/circuit-board.jpg',
-			'./images/project-1/eye.jpg',
-			'./images/project-1/lollipop-cat.png'
+			'./images/project-memory-game/memory-game-1.png'
 		]
 	},
 	{
