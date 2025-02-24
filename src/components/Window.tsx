@@ -34,10 +34,10 @@ function Window({ name }: { name: string }) {
 	const maximizeRef = useRef<HTMLButtonElement>(null);
 	const closeRef = useRef<HTMLButtonElement>(null);
 	const [windowData, setWindowData] = useState<FileData | null>(null);
-	const minWidth: number = 600;
-	const minHeight: number = 600;
+	const minWidth: number = 320;
+	const minHeight: number = 320;
 	const [size, setSize] = useState<Size>({
-		width: Math.max(((displaySize.width >= 900 ? 50 : 70) / 100) * displaySize.width, minWidth),
+		width: Math.max(((displaySize.width >= 1300 ? 40 : 60) / 100) * displaySize.width, minWidth),
 		height: Math.max(((displaySize.width >= 700 ? 60 : 50) / 100) * displaySize.height, minHeight)
 	});
 	const [position, setPosition] = useState({
