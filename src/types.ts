@@ -18,12 +18,12 @@ export interface ThemeInterface {
 		textColor: string;
 		textShadow: string;
 	};
-	bg: string;
 }
 
 interface ProjectFileData {
 	ref?: React.RefObject<HTMLDivElement>;
 	name: string;
+	iconName: string;
 	type: 'Project';
 	description: string;
 	links: { name: string, link: string }[];
@@ -36,17 +36,17 @@ interface TextFileData {
 	text: string;
 }
 
-interface ThemeSwitcher {
-	name: string;
-	type: 'ThemeSwitcher';
-}
-
-export type FileData = ProjectFileData | TextFileData | ThemeSwitcher;
+export type FileData = ProjectFileData | TextFileData;
 
 export interface AppContextInterface {
 	taskbarRef: React.RefObject<HTMLUListElement>;
+	imgModalRef: React.RefObject<HTMLDialogElement>;
+	img: string | null;
+	setImg: React.Dispatch<React.SetStateAction<string | null>>;
 	startOpen: boolean;
 	setStartOpen: React.Dispatch<React.SetStateAction<boolean>>;
+	themesOpen: boolean;
+	setThemesOpen: React.Dispatch<React.SetStateAction<boolean>>;
 	theme: string;
 	setTheme: React.Dispatch<React.SetStateAction<string>>;
 	openArr: string[];

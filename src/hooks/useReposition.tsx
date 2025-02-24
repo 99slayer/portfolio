@@ -27,8 +27,8 @@ function useReposition() {
 		if (newPosition.x > displaySize.width - windowSize.width) {
 			newPosition.x = displaySize.width - windowSize.width;
 		}
-		if (newPosition.y > (displaySize.height - taskbarRef.current!.offsetHeight) - windowSize.height) {
-			newPosition.y = (displaySize.height - taskbarRef.current!.offsetHeight) - windowSize.height;
+		if (newPosition.y > (displaySize.height - taskbarRef.current!.offsetHeight - 2) - windowSize.height) {
+			newPosition.y = (displaySize.height - taskbarRef.current!.offsetHeight - 2) - windowSize.height;
 		}
 
 		return newPosition;

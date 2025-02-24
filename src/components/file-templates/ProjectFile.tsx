@@ -1,13 +1,19 @@
-import { useRef, useState } from 'react';
+import { useContext, useState } from 'react';
+import { AppContext } from '../../context';
+import { AppContextInterface, Size } from '../../types';
 
 function ProjectFile(
-	{ windowSize, desc, links, images }: {
-		windowSize: { width: number, height: number }
+	{ windowSize, iconName, desc, links, images }: {
+		windowSize: Size,
+		iconName: string,
 		desc: string,
 		links: { name: string, link: string }[],
 		images: string[]
 	}
 ) {
+	const { imgModalRef, setImg } = useContext(AppContext) as AppContextInterface;
+	const [hover, setHover] = useState<boolean>(false);
+
 	function createLinks(arr: { name: string, link: string }[]) {
 		const links = [];
 
@@ -15,13 +21,14 @@ function ProjectFile(
 			const linkData = arr[i];
 			links.push(
 				<li
-					className='w-[175px] py-[1px] flex justify-center text-[0.5rem] leading-[0.5rem] bg-theme-button shadow-heavy-outset hover:bg-theme-button-hover active:bg-theme-button-click active:shadow-heavy-inset @[555px]:text-[0.7rem] @[555px]:leading-[0.7rem]'
+					className='w-[130px] py-[1px] flex justify-center text-[0.5rem] leading-[0.5rem] bg-theme-primary border-[1px] border-theme-trim shadow-btn active:shadow-btn-click active:bg-theme-highlight active:text-theme-text-highlight @[360px]:text-[0.7rem] @[360px]:leading-[0.7rem] @[360px]:w-[175px]'
 					key={i}
 				>
 					<a
 						href={linkData.link}
 						target='_blank'
 						rel='noopener noreferrer'
+						draggable={false}
 					>
 						{linkData.name}
 					</a>
@@ -32,103 +39,83 @@ function ProjectFile(
 		return links;
 	}
 
+	function createImgBtns(arr: string[]) {
+		const btns = [];
+
+		for (let i = 0; i < arr.length; i++) {
+			btns.push(
+				<button
+					className='border-[1px] border-theme-trim shadow-btn active:shadow-none active:bg-theme-trim active:text-theme-primary'
+					key={arr[i]}
+					onClick={() => {
+						setImg(arr[i]);
+						setTimeout(() => {
+							imgModalRef.current!.showModal();
+						}, 50);
+					}}
+				>
+					<div
+						className='py-[0.1rem] pr-[0.2rem] flex justify-center items-center gap-[0.1rem] relative'
+					>
+						<div
+							className='absolute top-0 right-0 bottom-0 left-0 bg-theme-primary opacity-20'
+						/>
+						<img
+							src='./icons/img-icon.ico'
+							draggable='false'
+						/>
+						<p
+							className='font-[family-name:Geneva] tracking-normal truncate'
+						>
+							{`IMG-${i + 1}.png`}
+						</p>
+					</div>
+				</button>
+			);
+		}
+
+		return btns;
+	}
+
 	return (
 		<div
-			className='@container flex-1 p-2 text-[0.8rem] leading-[0.8rem] bg-theme-secondary horizontal-lines'
+			className='@container flex-1 flex flex-col text-[0.8rem] leading-[0.8rem] bg-theme-primary'
 		>
-			<div
-				className='flex-1 flex flex-col gap-1'
-			>
-				<div className='flex-1 flex justify-center'>
-					<div className='relative'>
-						<ImageSlider images={images} windowSize={windowSize} />
-						<div
-							className='p-2 absolute bottom-1 left-4 right-4 border-[1px] border-black text-[0.6rem] leading-[0.6rem] bg-theme-secondary-transparent'
-						>
-							{desc}
-						</div>
-					</div>
+			<div className='flex border-b-[1px] border-b-theme-trim'>
+				<div
+					className='p-1 relative border-r-[1px] border-r-theme-trim'
+					onMouseOver={() => setHover(true)}
+					onMouseLeave={() => setHover(false)}
+				>
+					<div
+						className='absolute top-1 left-1 bottom-1 right-1 bg-theme-primary opacity-20'
+					/>
+					<img
+						className='max-w-[4rem] max-h-[4rem] border-[1px] border-theme-trim object-contain'
+						src={hover ? `./gifs/${iconName}.gif` : `./icons/${iconName}.png`}
+						draggable='false'
+						alt=''
+					/>
 				</div>
-				<ul className='flex flex-col justify-center items-center gap-0 @[555px]:flex-row @[555px]:gap-1'>
+				<ul
+					className='self-start p-2 flex flex-col justify-center items-center gap-1'
+				>
 					{createLinks(links)}
 				</ul>
 			</div>
-		</div>
-	);
-}
-
-function ImageSlider({ images, windowSize }: {
-	images: string[],
-	windowSize: { width: number, height: number }
-}) {
-	const leftRef = useRef<HTMLButtonElement>(null);
-	const rightRef = useRef<HTMLButtonElement>(null);
-	const [num, setNum] = useState<number>(0);
-
-	return (
-		<div
-			className='flex gap-1 justify-center items-center overflow-hidden'
-		>
-			{
-				images.length > 1 ?
-					<button
-						className='shadow-heavy-outset bg-theme-button hover:bg-theme-button-hover active:bg-theme-button-click button-noise focus:shadow-heavy-inset'
-						ref={leftRef}
-						onClick={() => {
-							if (num - 1 < 0) {
-								setNum(images.length - 1);
-							} else setNum(num - 1);
-						}}
-						onMouseUp={() => leftRef.current!.blur()}
-					>
-						<span className='material-symbols-outlined size-5 flex justify-center items-center text-3xl'>
-							arrow_left
-						</span>
-					</button> :
-					<></>
-			}
-
 			<div
-				className='p-[2px] flex bg-black pixel-corners-window'
+				className='p-[0.2rem] pb-[0.24rem] flex gap-[0.2rem] border-b-[1px] border-b-theme-trim'
 			>
-				<div
-					className='p-[4px] flex bg-[linear-gradient(90deg,_transparent_calc(100%_-_13px),_var(--color-lowlight)_calc(100%_-_13px)),_linear-gradient(var(--color-highlight)_calc(100%_-_13px),_var(--color-lowlight)_calc(100%_-_13px)),_linear-gradient(var(--color-highlight),_var(--color-highlight))] pixel-corners-window'
-				>
-					<div
-						className='p-[6px] flex justify-center items-center bg-theme-primary pixel-corners-window'
-					>
-						<img
-							className='flex-1 object-contain pixel-corners-window'
-							style={{
-								imageRendering: 'initial',
-								maxWidth: windowSize.width - 160,
-								maxHeight: windowSize.height - 180
-							}}
-							src={images[num]}
-							draggable='false'
-						/>
-					</div>
-				</div>
+				{createImgBtns(images)}
 			</div>
-
-			{
-				images.length > 1 ?
-					<button
-						className='shadow-heavy-outset bg-theme-button hover:bg-theme-button-hover active:bg-theme-button-click button-noise focus:shadow-heavy-inset'
-						ref={rightRef}
-						onClick={() => {
-							if (num + 1 > images.length - 1) {
-								setNum(0);
-							} else setNum(num + 1);
-						}}
-						onMouseUp={() => rightRef.current!.blur()}
-					>
-						<span className='material-symbols-outlined size-5 flex justify-center items-center text-3xl'>
-							arrow_right
-						</span>
-					</button> :
-					<></>
-			}
+			<p
+				className='p-1 px-2 text-[1rem] font-[family-name:Geneva] tracking-normal overflow-auto'
+				style={{
+					height: `${windowSize.height - 256}px`
+				}}
+			>
+				{desc}
+			</p>
 		</div>
 	);
 }

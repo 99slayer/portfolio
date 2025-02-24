@@ -1,11 +1,12 @@
 import App from './App';
 import Display from './Display';
+import ImageModal from './ImageModal';
 import StartMenu from './StartMenu';
 import Taskbar from './Taskbar';
+import ThemeMenu from './ThemeMenu';
 import Window from './Window';
 import ProjectFile from './file-templates/ProjectFile';
 import TextFile from './file-templates/TextFile';
-import ThemeSwitcher from './file-templates/ThemeSwitcher';
 
 const component = {
 	App,
@@ -15,7 +16,8 @@ const component = {
 	ProjectFile,
 	TextFile,
 	StartMenu,
-	ThemeSwitcher
+	ThemeMenu,
+	ImageModal
 };
 
 export default component;

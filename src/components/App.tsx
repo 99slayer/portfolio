@@ -1,12 +1,30 @@
 import { useRef, useState } from 'react';
+import useResizeObserver from '@react-hook/resize-observer';
 import component from './component';
 import { AppContext } from '../context';
 import themes from '../themes';
+import { Size } from '../types';
 
 function App() {
-	const taskbarRef = useRef<HTMLUListElement>(null);
+	const appRef = useRef<HTMLDivElement>(null);
+	const [appSize, setAppSize] = useState<Size>({
+		width: 0,
+		height: 0
+	});
 
+	useResizeObserver(appRef, () => {
+		setAppSize({
+			width: appRef.current!.offsetWidth,
+			height: appRef.current!.offsetHeight
+		});
+	});
+
+	const taskbarRef = useRef<HTMLUListElement>(null);
+	const imgModalRef = useRef<HTMLDialogElement>(null);
+
+	const [img, setImg] = useState<string | null>(null);
 	const [startOpen, setStartOpen] = useState<boolean>(false);
+	const [themesOpen, setThemesOpen] = useState<boolean>(false);
 	const [theme, setTheme] = useState<string>(themes[0].name);
 	const [openArr, setOpenArr] = useState<string[]>([]);
 	const [visibleArr, setVisibleArr] = useState<string[]>([]);
@@ -50,8 +68,13 @@ function App() {
 
 	const appContextValues = {
 		taskbarRef,
+		imgModalRef,
+		img,
+		setImg,
 		startOpen,
 		setStartOpen,
+		themesOpen,
+		setThemesOpen,
 		theme,
 		setTheme,
 		openArr,
@@ -68,10 +91,12 @@ function App() {
 		<AppContext.Provider value={appContextValues}>
 			<div
 				className={`min-h-screen cursor-custom-default flex theme-${theme} text-theme-text`}
+				ref={appRef}
 			>
 				<div
-					className={'flex-1 flex flex-col relative bg bg-center bg-cover'}
+					className={'flex-1 flex flex-col relative bg'}
 				>
+					<component.ImageModal appSize={appSize} />
 					<component.Display />
 					<component.Taskbar />
 				</div>

@@ -7,21 +7,21 @@ export default {
 	theme: {
 		extend: {
 			boxShadow: {
-				'heavy-inset': '2px 2px var(--color-lowlight) inset, -2px -2px var(--color-highlight) inset',
-				'heavy-outset': '-2px -2px var(--color-lowlight) inset, 2px 2px var(--color-highlight) inset',
+				'header': '1px 1px 2px rgb(37, 37, 37, 0.5) inset, -1px -1px 2px rgb(37, 37, 37, 0.5) inset',
+				'smooth-outset': '-2px -2px 4px var(--color-trim) inset, 2px 2px 4px var(--color-shadow-highlight) inset',
+				'smooth-inset': '2px 2px 4px var(--color-trim) inset',
+				'btn': '1px 1px var(--color-trim)',
+				'btn-click': '1px 1px var(--color-highlight) inset',
 			},
 			colors: {
 				theme: {
 					'text': 'var(--color-text)',
+					'text-highlight': 'var(--color-text-highlight)',
 					'background': 'var(--color-background)',
 					'primary': 'var(--color-primary)',
 					'secondary': 'var(--color-secondary)',
-					'secondary-transparent': 'var(--color-secondary-transparent)',
-					'button': 'var(--color-btn)',
-					'button-hover': 'var(--color-btn-hover)',
-					'button-click': 'var(--color-btn-click)',
-					'highlight': 'var(--color-highlight)',
-					'lowlight': 'var(--color-lowlight)'
+					'trim': 'var(--color-trim)',
+					'highlight': 'var(--color-highlight)'
 				}
 			},
 			cursor: {

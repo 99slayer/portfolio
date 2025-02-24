@@ -4,42 +4,38 @@ const themes: ThemeInterface[] = [
 	{
 		name: 'DEFAULT',
 		colors: {
-			primary: '#616161',
-			secondary: '#c0c0c0',
-			textColor: '#252525',
-			textShadow: '#c0c0c0'
-		},
-		bg: './backgrounds/default-bg.jpeg'
+			primary: 'black',
+			secondary: 'white',
+			textColor: 'white',
+			textShadow: 'black'
+		}
 	},
 	{
 		name: 'PURPLE',
 		colors: {
-			primary: '#8070C5',
-			secondary: '#CAC4CE',
-			textColor: '#242038',
-			textShadow: '#8070C5'
-		},
-		bg: './backgrounds/purple-bg.jpg'
+			primary: '#6a2cbd',
+			secondary: '#c5a1ff',
+			textColor: '#c5a1ff',
+			textShadow: '#6a2cbd'
+		}
 	},
 	{
 		name: 'RED',
 		colors: {
-			primary: '#C20114',
-			secondary: '#1d1d1d',
-			textColor: '#ECEBF3',
-			textShadow: '#C20114'
-		},
-		bg: './backgrounds/red-bg.jpg'
+			primary: '#1d1d1d',
+			secondary: '#f1152b',
+			textColor: '#f1152b',
+			textShadow: '#1d1d1d'
+		}
 	},
 	{
 		name: 'BLUE',
 		colors: {
-			primary: '#2A2A72',
-			secondary: '#81d1ff',
-			textColor: '#81d1ff',
-			textShadow: '#232528'
-		},
-		bg: './backgrounds/blue-bg.png'
+			primary: '#3737d3',
+			secondary: '#7dadf5',
+			textColor: '#7dadf5',
+			textShadow: '#3737d3'
+		}
 	}
 ];
 

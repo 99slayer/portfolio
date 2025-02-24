@@ -5,7 +5,7 @@ function TextFile({ text }: { text: string }) {
 	const [tempText, setTempText] = useState<string | null>(null);
 
 	return (
-		<div className='flex-1 p-2 pr-3 pb-[20px] text-[0.8rem] leading-[0.8rem] bg-theme-secondary horizontal-lines'>
+		<div className='flex-1 p-2 pr-3 pb-[20px] text-[1rem] bg-theme-primary font-[family-name:Geneva] tracking-normal'>
 			<textarea
 				className='w-[100%] min-h-[100%] px-1 outline-none bg-transparent cursor-custom-default'
 				style={{ resize: 'none' }}

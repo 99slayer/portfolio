@@ -8,82 +8,82 @@ button, a {
 
 @layer base {
 	:root {
-		--color-text: #252525;
-		--color-background: #ffffff;
-		--color-primary: #616161;
-		--color-secondary: #c0c0c0;
-		--color-secondary-transparent: #c0c0c0ce;
-		--color-btn: #bbbbbb;
-		--color-btn-hover: #979797;
-		--color-btn-click: #797979;
-		--color-highlight: #c9c9c9; 
-		--color-lowlight: #4b4b4b;
+		--color-text: black;
+		--color-text-highlight: white;
+		--color-background: white;
+		--color-primary: white;
+		--color-secondary: rgb(211, 211, 211);
+		--color-trim: black;
+		--color-highlight: black;
+		--color-shadow-highlight: white;
 	}
 }
 
 .theme-DEFAULT {
-	--color-text: #252525;
-	--color-background: #ffffff;
-	--color-primary: #616161;
-	--color-secondary: #c0c0c0;
-	--color-secondary-transparent: #c0c0c0ce;
-	--color-btn: #bbbbbb;
-	--color-btn-hover: #979797;
-	--color-btn-click: #797979;
-	--color-highlight: #c9c9c9; 
-	--color-lowlight: #4b4b4b;
+	--color-text: black;
+	--color-text-highlight: white;
+	--color-background: white;
+	--color-primary: white;
+	--color-secondary: rgb(211, 211, 211);
+	--color-trim: black;
+	--color-highlight: black;
+	--color-shadow-highlight: white;
 }
 
 .theme-PURPLE {
-	--color-text: #242038;
-	--color-background: #F7ECE1;
-	--color-primary: #8070C5;
-	--color-secondary: #CAC4CE;
-	--color-secondary-transparent: #CAC4CEce;
-	--color-btn: #8070C5;
-	--color-btn-hover: #7669b6;
-	--color-btn-click: #63589b;
-	--color-highlight: #c7baf5; 
-	--color-lowlight: #4B3D7D;
+	--color-text: #6a2cbd;
+	--color-text-highlight: #c5a1ff;
+	--color-background: #c5a1ff;
+	--color-primary: #c5a1ff;
+	--color-secondary: #c5a1ff;
+	--color-trim: #6a2cbd;
+	--color-highlight: #6a2cbd;
+	--color-shadow-highlight: #e5ddff;
 }
 
 .theme-RED {
-	--color-text: #ECEBF3;
-	--color-background: #1d1d1d;
-	--color-primary: #C20114;
-	--color-secondary: #1d1d1d;
-	--color-secondary-transparent: #1d1d1dce;
-	--color-btn: var(--color-primary);
-	--color-btn-hover: #ac0011;
-	--color-btn-click: #88000e;
-	--color-highlight: #ff6060; 
-	--color-lowlight: #702020;
+	--color-text: #1d1d1d;
+	--color-text-highlight: #f1152b;
+	--color-background: #f1152b;
+	--color-primary: #f1152b;
+	--color-secondary: #f1152b;
+	--color-trim: #1d1d1d;
+	--color-highlight: #1d1d1d;
+	--color-shadow-highlight: #ff394c;
 }
 
 .theme-BLUE {
-	--color-text: #232528;
-	--color-background: #EAF6FF;
-	--color-primary: #2A2A72;
-	--color-secondary: #81d1ff;
-	--color-secondary-transparent: #81d1ffce;
-	--color-btn: var(--color-highlight);
-	--color-btn-hover: #6363e4;
-	--color-btn-click: #4444d4;
-	--color-highlight: #5454ff; 
-	--color-lowlight: #15154e;
+	--color-text: #3737d3;
+	--color-text-highlight: #7dadf5;
+	--color-background: #7dadf5;
+	--color-primary: #7dadf5;
+	--color-secondary: #7dadf5;
+	--color-trim: #3737d3;
+	--color-highlight: #3737d3;
+	--color-shadow-highlight: #b0b0ff;
 }
 
 @font-face {
-	font-family: 'Qager';
-	src: url('./fonts/Qager-font.ttf') format('truetype');
+	font-family: 'Geneva';
+	src: url('./fonts/Geneva.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Sysfont';
+  src: url('./fonts/sysfont.woff2') format('woff2'),
+  url('./fonts/sysfont.woff') format('woff');
 }
 
 @layer components {
 	* {
-		font-family: 'Qager', serif;
+		font-family: 'Sysfont', 'Geneva', serif;
+		letter-spacing: 1.5px;
 		font-weight: 500;
 		font-style: normal;
-		scrollbar-color: var(--color-primary) var(--color-secondary);
+		font-weight: normal;
+		text-rendering: geometricPrecision;
+		
+		scrollbar-color: var(--color-primary) var(--color-trim);
 		-webkit-user-select: none; /* Safari */
 		-ms-user-select: none; /* IE 10 and IE 11 */
 		user-select: none; /* Standard syntax */
@@ -98,264 +98,29 @@ button, a {
 	img {
 		image-rendering: pixelated;
 	}
-}
 
-.pixel-corners-window {
-  clip-path: polygon(
-    0px calc(100% - 8px),
-    4px calc(100% - 8px),
-    4px calc(100% - 4px),
-    8px calc(100% - 4px),
-    8px 100%,
-    calc(100% - 8px) 100%,
-    calc(100% - 8px) calc(100% - 4px),
-    calc(100% - 4px) calc(100% - 4px),
-    calc(100% - 4px) calc(100% - 8px),
-    100% calc(100% - 8px),
-    100% 8px,
-    calc(100% - 4px) 8px,
-    calc(100% - 4px) 4px,
-    calc(100% - 8px) 4px,
-    calc(100% - 8px) 0px,
-    8px 0px,
-    8px 4px,
-    4px 4px,
-    4px 8px,
-    0px 8px
-  );
-}
-
-.pixel-corners-theme-switcher {
-  clip-path: polygon(
-    0px calc(100% - 30px),
-    3px calc(100% - 30px),
-    3px calc(100% - 24px),
-    6px calc(100% - 24px),
-    6px calc(100% - 18px),
-    9px calc(100% - 18px),
-    9px calc(100% - 15px),
-    12px calc(100% - 15px),
-    12px calc(100% - 12px),
-    15px calc(100% - 12px),
-    15px calc(100% - 9px),
-    18px calc(100% - 9px),
-    18px calc(100% - 6px),
-    24px calc(100% - 6px),
-    24px calc(100% - 3px),
-    30px calc(100% - 3px),
-    30px 100%,
-    100% 100%,
-    100% 0px,
-    30px 0px,
-    30px 3px,
-    24px 3px,
-    24px 6px,
-    18px 6px,
-    18px 9px,
-    15px 9px,
-    15px 12px,
-    12px 12px,
-    12px 15px,
-    9px 15px,
-    9px 18px,
-    6px 18px,
-    6px 24px,
-    3px 24px,
-    3px 30px,
-    0px 30px
-  );
-}
-.pixel-corners-theme-switcher-color {
-  clip-path: polygon(
-    9px 12px,
-    12px 12px,
-    12px 15px,
-    15px 15px,
-    15px 18px,
-    18px 18px,
-    18px 21px,
-		21px 21px,
-		21px 24px,
-		24px 24px,
-		24px 27px,
-		27px 27px,
-		27px 30px,
-		30px 30px,
-		30px 33px,
-		33px 33px,
-		33px 36px,
-		36px 36px,
-		36px 39px,
-		100% 100%,
-		100% 0px,
-    0px 0px,
-    0px 3px,
-    3px 3px,
-    3px 6px,
-    6px 6px,
-    6px 9px,
-  	9px 9px
-  );
-}
-
-.pixel-corners-start-btn {
-  clip-path: polygon(
-		0px 100%,
-		100% 100%,
-    100% 46px,
-    calc(100% - 2px) 46px,
-    calc(100% - 2px) 38px,
-    calc(100% - 4px) 38px,
-    calc(100% - 4px) 34px,
-    calc(100% - 6px) 34px,
-    calc(100% - 6px) 32px,
-    calc(100% - 6px) 30px,
-    calc(100% - 8px) 30px,
-    calc(100% - 8px) 28px,
-    calc(100% - 8px) 26px,
-    calc(100% - 10px) 26px,
-    calc(100% - 10px) 24px,
-    calc(100% - 12px) 24px,
-    calc(100% - 12px) 22px,
-    calc(100% - 12px) 20px,
-    calc(100% - 14px) 20px,
-    calc(100% - 14px) 18px,
-    calc(100% - 16px) 18px,
-    calc(100% - 18px) 16px,
-    calc(100% - 18px) 14px,
-    calc(100% - 20px) 14px,
-    calc(100% - 20px) 12px,
-    calc(100% - 22px) 12px,
-    calc(100% - 24px) 12px,
-    calc(100% - 24px) 10px,
-    calc(100% - 26px) 10px,
-    calc(100% - 26px) 8px,
-    calc(100% - 28px) 8px,
-    calc(100% - 30px) 8px,
-    calc(100% - 30px) 6px,
-    calc(100% - 32px) 6px,
-    calc(100% - 34px) 6px,
-    calc(100% - 34px) 4px,
-    calc(100% - 38px) 4px,
-    calc(100% - 38px) 2px,
-    calc(100% - 46px) 2px,
-    calc(100% - 46px) 0px,
-    46px 0px,
-    46px 2px,
-    38px 2px,
-    38px 4px,
-    34px 4px,
-    34px 6px,
-    32px 6px,
-    30px 6px,
-    30px 8px,
-    28px 8px,
-    26px 8px,
-    26px 10px,
-    24px 10px,
-    24px 12px,
-    22px 12px,
-    20px 12px,
-    20px 14px,
-    18px 14px,
-    18px 16px,
-    16px 18px,
-    14px 18px,
-    14px 20px,
-    12px 20px,
-    12px 22px,
-    12px 24px,
-    10px 24px,
-    10px 26px,
-    8px 26px,
-    8px 28px,
-    8px 30px,
-    6px 30px,
-    6px 32px,
-    6px 34px,
-    4px 34px,
-    4px 38px,
-    2px 38px,
-    2px 46px,
-    0px 46px
-  );
-}
-
-.pixel-corners-info-btn {
-  clip-path: polygon(
-    0px calc(100% - 14px),
-    2px calc(100% - 14px),
-    2px calc(100% - 10px),
-    4px calc(100% - 10px),
-    4px calc(100% - 6px),
-    6px calc(100% - 6px),
-    6px calc(100% - 4px),
-    10px calc(100% - 4px),
-    10px calc(100% - 2px),
-    14px calc(100% - 2px),
-    14px 100%,
-    calc(100% - 14px) 100%,
-    calc(100% - 14px) calc(100% - 2px),
-    calc(100% - 10px) calc(100% - 2px),
-    calc(100% - 10px) calc(100% - 4px),
-    calc(100% - 6px) calc(100% - 4px),
-    calc(100% - 6px) calc(100% - 6px),
-    calc(100% - 4px) calc(100% - 6px),
-    calc(100% - 4px) calc(100% - 10px),
-    calc(100% - 2px) calc(100% - 10px),
-    calc(100% - 2px) calc(100% - 14px),
-    100% calc(100% - 14px),
-    100% 14px,
-    calc(100% - 2px) 14px,
-    calc(100% - 2px) 10px,
-    calc(100% - 4px) 10px,
-    calc(100% - 4px) 6px,
-    calc(100% - 6px) 6px,
-    calc(100% - 6px) 4px,
-    calc(100% - 10px) 4px,
-    calc(100% - 10px) 2px,
-    calc(100% - 14px) 2px,
-    calc(100% - 14px) 0px,
-    14px 0px,
-    14px 2px,
-    10px 2px,
-    10px 4px,
-    6px 4px,
-    6px 6px,
-    4px 6px,
-    4px 10px,
-    2px 10px,
-    2px 14px,
-    0px 14px
-  );
+	dialog:modal {
+		max-width: 100vw;
+		max-height: 100vh;
+	}
 }
 
 .button-noise {
-	background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 18 18' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.87' numOctaves='6' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+	background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.87' numOctaves='6' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
 	background-blend-mode: overlay;
-}
-
-.txt-bg-noise {
-	background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 26 26' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.87' numOctaves='6' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-	background-blend-mode: overlay;
-}
-
-.horizontal-lines {
-    background-image: repeating-linear-gradient(0deg, var(--color-primary), var(--color-secondary) 1px, transparent 0px, transparent 2px);
-    background-size: 20px;
 }
 
 .bg {
-  --s: 6px; /* control the size */
-  --g: repeating-conic-gradient(
-		var(--color-highlight) 0 25%, 
-		var(--color-lowlight) 0 50%
-		) 0/;
-  background:
-    var(--g) calc(1*var(--s)) calc(7*var(--s)),
-    var(--g) calc(2*var(--s)) calc(5*var(--s)),
-    var(--g) calc(3*var(--s)) calc(3*var(--s)),
-    var(--g) calc(5*var(--s)) calc(2*var(--s)),
-    var(--g) calc(7*var(--s)) calc(1*var(--s));
-  background-blend-mode: darken;
+	background-color: var(--color-background);
+	background-image: 
+		linear-gradient(45deg, var(--color-trim) 25%, transparent 25%, transparent 75%, var(--color-trim) 75%, var(--color-trim)), 
+		linear-gradient(45deg, var(--color-trim) 25%, transparent 25%, transparent 75%, var(--color-trim) 75%, var(--color-trim));
+	background-size: 4px 4px;
+	background-position: 0 0, 2px 2px;
+}
+
+.horizontal-lines {
+    background-image: 
+		repeating-linear-gradient(0deg, var(--color-trim), var(--color-trim) 2px, transparent 2px, transparent 4px);
+    background-size: 2px;
 }

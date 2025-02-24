@@ -3,8 +3,8 @@ import { AppContext, DisplayContext } from '../context';
 import { AppContextInterface, Coordinates, DisplayContextInterface, Size } from '../types';
 
 function useResize() {
-	const minWidth: number = 310;
-	const minHeight: number = 220;
+	const minWidth: number = 320;
+	const minHeight: number = 320;
 	const { taskbarRef } = useContext(AppContext) as AppContextInterface;
 	const { displaySize } = useContext(DisplayContext) as DisplayContextInterface;
 
@@ -20,7 +20,7 @@ function useResize() {
 		};
 
 		if (newSize.height + position.y > displaySize.height - taskbarRef.current!.offsetHeight) {
-			newSize.height = displaySize.height - taskbarRef.current!.offsetHeight - position.y;
+			newSize.height = displaySize.height - taskbarRef.current!.offsetHeight - 2 - position.y;
 		}
 		if (newSize.width + position.x > displaySize.width) {
 			newSize.width = displaySize.width - position.x;
