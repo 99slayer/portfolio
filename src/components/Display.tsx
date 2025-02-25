@@ -106,7 +106,7 @@ function DisplayIcon(
 						'./icons/text-file-icon.png'
 				}
 				draggable='false'
-				alt={`${iconName} icon`}
+				alt='File icon.'
 			/>
 			<div className='max-w-[120px] leading-[0.6rem]'>
 				<span

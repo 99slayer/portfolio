@@ -71,7 +71,7 @@ function Taskbar() {
 
 			tabs.push(
 				<li
-					className='w-[240px] min-w-[40px] flex truncate border-[2px] border-l-[0px] border-t-[0px] border-theme-trim text-[0.5rem] leading-[0.5rem] bg-theme-secondary button-noise @[480px]:text-[0.7rem]'
+					className='w-[240px] min-w-[40px] flex truncate border-[2px] border-l-[0px] border-t-[0px] border-theme-trim text-[0.5rem] leading-[0.5rem] bg-theme-secondary button-noise @[480px]:text-[0.7rem] @[480px]:leading-[0.7rem]'
 					style={{
 						boxShadow: active ? '2px 2px 4px var(--color-trim) inset' : '-2px -2px 4px var(--color-trim) inset, 2px 2px 4px var(--color-shadow-highlight) inset'
 					}}
@@ -160,10 +160,10 @@ function Taskbar() {
 								id='themes-overlay'
 							/>
 							<img
-								className=''
 								id='themes-img'
 								src='./icons/color-wheel.png'
 								draggable='false'
+								alt='Theme changer icon.'
 							/>
 						</div>
 					</button>

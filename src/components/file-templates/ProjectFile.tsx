@@ -63,6 +63,7 @@ function ProjectFile(
 						<img
 							src='./icons/img-icon.ico'
 							draggable='false'
+							alt='Image file icon.'
 						/>
 						<p
 							className='font-[family-name:Geneva] tracking-normal truncate'
@@ -94,7 +95,7 @@ function ProjectFile(
 						className='max-w-[4rem] max-h-[4rem] border-[1px] border-theme-trim object-contain'
 						src={hover ? `./gifs/${iconName}.gif` : `./icons/${iconName}.png`}
 						draggable='false'
-						alt=''
+						alt='Spinning project icon.'
 					/>
 				</div>
 				<ul

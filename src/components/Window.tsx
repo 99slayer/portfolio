@@ -144,11 +144,11 @@ function Window({ name }: { name: string }) {
 							<div
 								className='w-[104px] py-[0.06rem] flex flex-col justify-between'
 							/>
-							<p
+							<h1
 								className='rc px-2 truncate text-[0.74rem] leading-[0.72rem] font-semibold capitalize bg-theme-primary'
 							>
 								{name}
-							</p>
+							</h1>
 							<div className='mr-2 px-1 flex items-center gap-[4px] bg-theme-primary'>
 								<button
 									className='w-[28px] h-[20px] pb-[5px] flex justify-center items-center border-[1px] border-theme-trim text-[0.7rem] leading-[0.7rem] shadow-btn bg-theme-primary active:bg-theme-highlight active:text-theme-text-highlight active:shadow-none'
