@@ -1,4 +1,8 @@
-import { useContext, useEffect, useState } from 'react';
+import {
+	useContext,
+	useEffect,
+	useState
+} from 'react';
 import { AppContext } from '../context';
 import { AppContextInterface } from '../types';
 
@@ -17,6 +21,11 @@ function Taskbar() {
 		hide,
 		setActive
 	} = useContext(AppContext) as AppContextInterface;
+
+	const [startActive, setStartActive] = useState<boolean>(false);
+	const [themesActive, setThemesActive] = useState<boolean>(false);
+	const [infoActive, setInfoActive] = useState<boolean>(false);
+
 	const [hours, setHours] = useState<number>(getHrs());
 	const [minutes, setMinutes] = useState<number | string>(getMins());
 	const [AMPM, setAMPM] = useState<string>(getAMPM());
@@ -121,9 +130,16 @@ function Taskbar() {
 						className='size-5 flex justify-center items-center border-[2px] border-l-[0px] border-t-[0px] border-theme-trim shadow-smooth-outset active:shadow-smooth-inset @[480px]:size-6'
 						id='start-btn'
 						onClick={() => setStartOpen(!startOpen)}
+						onMouseDown={() => {
+							setStartActive(true);
+							window.onmouseup = () => setStartActive(false);
+						}}
 					>
 						<svg
-							className='p-[7px] active:translate-y-[2px]'
+							className='p-[7px]'
+							style={{
+								translate: `0px ${startActive ? '2px' : '0px'}`
+							}}
 							id='start-img'
 							viewBox="0 0 24 24"
 							xmlns="http://www.w3.org/2000/svg"
@@ -143,20 +159,28 @@ function Taskbar() {
 						</svg>
 					</button>
 				</li>
+
 				<li
-					className='size-5 flex justify-center items-center bg-theme-secondary border-[2px] border-l-[0px] border-t-[0px] border-theme-trim button-noise @[480px]:size-6'
+					className='bg-theme-secondary button-noise'
 				>
 					<button
-						className='size-5 flex justify-center items-center shadow-smooth-outset active:shadow-smooth-inset @[480px]:size-6'
+						className='size-5 flex justify-center items-center border-[2px] border-l-[0px] border-t-[0px] border-theme-trim shadow-smooth-outset active:shadow-smooth-inset @[480px]:size-6'
 						id='themes-btn'
 						onClick={() => setThemesOpen(!themesOpen)}
+						onMouseDown={() => {
+							setThemesActive(true);
+							window.onmouseup = () => setThemesActive(false);
+						}}
 					>
 						<div
-							className='flex-1 p-[4px] relative active:translate-y-[2px]'
+							className='flex-1 p-[4px] relative'
+							style={{
+								translate: `0px ${themesActive ? '2px' : '0px'}`
+							}}
 							id='themes-cont'
 						>
 							<div
-								className='absolute top-[0.15rem] right-[0.15rem] bottom-[0.15rem] left-[0.15rem] bg-theme-secondary opacity-30'
+								className='absolute top-[0.15rem] right-[0.15rem] bottom-[0.15rem] left-[0.15rem] bg-theme-secondary opacity-20'
 								id='themes-overlay'
 							/>
 							<img
@@ -172,9 +196,16 @@ function Taskbar() {
 					<button
 						className='size-5 flex justify-center items-center border-[2px] border-l-[0px] border-t-[0px] border-theme-trim shadow-smooth-outset active:shadow-smooth-inset @[480px]:size-6'
 						onClick={() => open('Site Info')}
+						onMouseDown={() => {
+							setInfoActive(true);
+							window.onmouseup = () => setInfoActive(false);
+						}}
 					>
 						<svg
-							className='p-[4px] active:translate-y-[2px]'
+							className='p-[4px]'
+							style={{
+								translate: `0px ${infoActive ? '2px' : '0px'}`
+							}}
 							viewBox='0 0 24 24'
 							xmlns='http://www.w3.org/2000/svg'
 						>
