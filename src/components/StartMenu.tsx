@@ -55,7 +55,7 @@ function StartMenu() {
 			>
 				<a
 					className='flex-1 p-[.1rem] px-2 flex items-center gap-1 border-[2px] border-l-0 border-theme-trim bg-theme-primary'
-					href=''
+					href='https://github.com/99slayer'
 					target='_blank'
 					rel='noopener noreferrer'
 				>

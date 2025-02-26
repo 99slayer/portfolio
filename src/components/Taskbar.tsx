@@ -73,7 +73,7 @@ function Taskbar() {
 				<li
 					className='w-[240px] min-w-[40px] flex truncate border-[2px] border-l-[0px] border-t-[0px] border-theme-trim text-[0.5rem] leading-[0.5rem] bg-theme-secondary button-noise @[480px]:text-[0.7rem] @[480px]:leading-[0.7rem]'
 					style={{
-						boxShadow: active ? '2px 2px 4px var(--color-trim) inset' : '-2px -2px 4px var(--color-trim) inset, 2px 2px 4px var(--color-shadow-highlight) inset'
+						boxShadow: active ? '2px 2px 4px var(--color-trim) inset' : '-1px -1px 4px var(--color-trim) inset, 1px 1px 4px var(--color-shadow-highlight) inset'
 					}}
 					key={name}
 					onClick={() => {
@@ -156,7 +156,7 @@ function Taskbar() {
 							id='themes-cont'
 						>
 							<div
-								className='absolute top-[0.1rem] right-[0.1rem] bottom-[0.1rem] left-[0.1rem] bg-theme-secondary opacity-30'
+								className='absolute top-[0.15rem] right-[0.15rem] bottom-[0.15rem] left-[0.15rem] bg-theme-secondary opacity-30'
 								id='themes-overlay'
 							/>
 							<img

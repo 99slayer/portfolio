@@ -8,7 +8,7 @@ export default {
 		extend: {
 			boxShadow: {
 				'header': '1px 1px 2px rgb(37, 37, 37, 0.5) inset, -1px -1px 2px rgb(37, 37, 37, 0.5) inset',
-				'smooth-outset': '-2px -2px 4px var(--color-trim) inset, 2px 2px 4px var(--color-shadow-highlight) inset',
+				'smooth-outset': '-1px -1px 4px var(--color-trim) inset, 1px 1px 4px var(--color-shadow-highlight) inset',
 				'smooth-inset': '2px 2px 4px var(--color-trim) inset',
 				'btn': '1px 1px var(--color-trim)',
 				'btn-click': '1px 1px var(--color-highlight) inset',
