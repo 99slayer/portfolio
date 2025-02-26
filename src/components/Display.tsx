@@ -95,8 +95,10 @@ function DisplayIcon(
 		<button
 			className='flex flex-col items-center gap-1'
 			onClick={() => open(iconName)}
-			onMouseDown={() => setIconActive(true)}
-			onMouseUp={() => setIconActive(false)}
+			onMouseDown={() => {
+				setIconActive(true);
+				window.onmouseup = () => setIconActive(false);
+			}}
 		>
 			<img
 				className='size-[1.3rem] object-contain'
