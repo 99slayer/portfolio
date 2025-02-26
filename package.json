@@ -6,12 +6,15 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+		"predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
     "@react-hook/resize-observer": "^2.0.2",
     "@tailwindcss/container-queries": "^0.1.1",
+    "gh-pages": "^6.3.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
