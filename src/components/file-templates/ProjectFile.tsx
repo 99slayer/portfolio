@@ -110,7 +110,7 @@ function ProjectFile(
 				{createImgBtns(images)}
 			</div>
 			<p
-				className='p-1 px-2 text-[1rem] font-[family-name:Geneva] tracking-normal overflow-auto'
+				className='p-1 px-2 text-[1.1rem] leading-[0.8rem] font-[family-name:Geneva] tracking-normal overflow-auto'
 				style={{
 					height: `${windowSize.height - 256}px`
 				}}

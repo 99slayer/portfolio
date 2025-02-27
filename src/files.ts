@@ -6,11 +6,11 @@ const files: FileData[] = [
 		type: 'Text',
 		text: `You can think of this website kind of like your desktop.
 
-	- To checkout a project just click its icon.
+To checkout a project just click its icon.
 
-	- Windows can be dragged around by their headers and resized using a tab at the bottom right.
+Windows can be dragged around by their headers and resized using the tab at the bottom right.
 
-	- Windows can be minimized/maximized and closed using the buttons on their header.`
+Windows can be minimized/maximized and closed using the buttons on their header.`
 	},
 	{
 		name: 'Pig Latin Converter',
