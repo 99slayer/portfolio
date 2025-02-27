@@ -85,8 +85,8 @@ function ProjectFile(
 			<div className='flex border-b-[1px] border-b-theme-trim'>
 				<div
 					className='p-1 relative border-r-[1px] border-r-theme-trim'
-					onMouseOver={() => setHover(true)}
-					onMouseLeave={() => setHover(false)}
+					onPointerOver={() => setHover(true)}
+					onPointerLeave={() => setHover(false)}
 				>
 					<div
 						className='absolute top-1 left-1 bottom-1 right-1 bg-theme-primary opacity-20'

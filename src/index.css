@@ -82,6 +82,7 @@ button, a {
 		font-style: normal;
 		font-weight: normal;
 		text-rendering: geometricPrecision;
+		touch-action: none;
 		
 		scrollbar-color: var(--color-primary) var(--color-trim);
 		-webkit-user-select: none; /* Safari */

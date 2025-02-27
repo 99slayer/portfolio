@@ -9,7 +9,7 @@ function useResize() {
 	const { displaySize } = useContext(DisplayContext) as DisplayContextInterface;
 
 	const resize = useCallback((
-		e: MouseEvent,
+		e: PointerEvent,
 		initClick: Coordinates,
 		position: Coordinates,
 		size: Size

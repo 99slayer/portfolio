@@ -127,12 +127,12 @@ function Taskbar() {
 			>
 				<li className='bg-theme-secondary button-noise'>
 					<button
-						className='size-5 flex justify-center items-center border-[2px] border-l-[0px] border-t-[0px] border-theme-trim shadow-smooth-outset active:shadow-smooth-inset @[480px]:size-6'
+						className={`size-5 flex justify-center items-center border-[2px] border-l-[0px] border-t-[0px] border-theme-trim ${startActive ? 'shadow-smooth-inset' : 'shadow-smooth-outset'} @[480px]:size-6`}
 						id='start-btn'
 						onClick={() => setStartOpen(!startOpen)}
-						onMouseDown={() => {
+						onPointerDown={() => {
 							setStartActive(true);
-							window.onmouseup = () => setStartActive(false);
+							window.onpointerup = () => setStartActive(false);
 						}}
 					>
 						<svg
@@ -164,12 +164,12 @@ function Taskbar() {
 					className='bg-theme-secondary button-noise'
 				>
 					<button
-						className='size-5 flex justify-center items-center border-[2px] border-l-[0px] border-t-[0px] border-theme-trim shadow-smooth-outset active:shadow-smooth-inset @[480px]:size-6'
+						className={`size-5 flex justify-center items-center border-[2px] border-l-[0px] border-t-[0px] border-theme-trim ${themesActive ? 'shadow-smooth-inset' : 'shadow-smooth-outset'} @[480px]:size-6`}
 						id='themes-btn'
 						onClick={() => setThemesOpen(!themesOpen)}
-						onMouseDown={() => {
+						onPointerDown={() => {
 							setThemesActive(true);
-							window.onmouseup = () => setThemesActive(false);
+							window.onpointerup = () => setThemesActive(false);
 						}}
 					>
 						<div
@@ -194,11 +194,11 @@ function Taskbar() {
 				</li>
 				<li className='bg-theme-secondary button-noise'>
 					<button
-						className='size-5 flex justify-center items-center border-[2px] border-l-[0px] border-t-[0px] border-theme-trim shadow-smooth-outset active:shadow-smooth-inset @[480px]:size-6'
+						className={`size-5 flex justify-center items-center border-[2px] border-l-[0px] border-t-[0px] border-theme-trim ${infoActive ? 'shadow-smooth-inset' : 'shadow-smooth-outset'} @[480px]:size-6`}
 						onClick={() => open('Site Info')}
-						onMouseDown={() => {
+						onPointerDown={() => {
 							setInfoActive(true);
-							window.onmouseup = () => setInfoActive(false);
+							window.onpointerup = () => setInfoActive(false);
 						}}
 					>
 						<svg

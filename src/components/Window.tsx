@@ -103,23 +103,26 @@ function Window({ name }: { name: string }) {
 				zIndex: `${activeArr.findIndex(x => x === name) + 1}`,
 				filter: activeArr[activeArr.length - 1] === name ? 'brightness(1)' : 'brightness(0.9)'
 			}}
-			onMouseDown={() => setActive(name)}
+			onPointerDown={() => setActive(name)}
 		>
 			<div className='flex-1 flex flex-col relative'>
 				<div
 					className='rc flex items-center gap-[6px] cursor-custom-grab'
-					onMouseDown={(e) => {
+					onPointerDown={(e) => {
 						(e.target as HTMLDivElement).classList.add('cursor-custom-grabbing');
 						let mouseDown = true;
 						const initClick: Coordinates = {
 							x: e.pageX,
 							y: e.pageY
 						};
-						window.onmousemove = (e: MouseEvent) => {
+						window.onpointermove = (e: PointerEvent) => {
 							if (!mouseDown) return;
 							if (size.width >= displaySize.width) {
-								const newSize = { width: 500, height: 700 };
-								const pos = { x: initClick.x, y: initClick.y };
+								const newSize: Size = {
+									width: Math.max(displaySize.width * 0.4, 320),
+									height: Math.max(displaySize.height * 0.5, 320)
+								};
+								const pos: Coordinates = { x: initClick.x, y: initClick.y };
 								const newPosition: Coordinates = reposition(e, initClick, pos, newSize);
 								setSize(newSize);
 								setPosition(newPosition);
@@ -128,7 +131,7 @@ function Window({ name }: { name: string }) {
 							const newPosition: Coordinates = reposition(e, initClick, position, size);
 							setPosition(newPosition);
 						};
-						window.onmouseup = () => {
+						window.onpointerup = () => {
 							const cursorElements = document.querySelectorAll('.rc');
 							cursorElements.forEach(el => el.classList.remove('cursor-custom-grabbing'));
 							mouseDown = false;
@@ -153,8 +156,8 @@ function Window({ name }: { name: string }) {
 								<button
 									className='w-[28px] h-[20px] pb-[5px] flex justify-center items-center border-[1px] border-theme-trim text-[0.7rem] leading-[0.7rem] shadow-btn bg-theme-primary active:bg-theme-highlight active:text-theme-text-highlight active:shadow-none'
 									ref={minimizeRef}
-									onMouseDown={(e) => e.stopPropagation()}
-									onMouseUp={() => minimizeRef.current!.blur()}
+									onPointerDown={(e) => e.stopPropagation()}
+									onPointerUp={() => minimizeRef.current!.blur()}
 									onClick={() => {
 										hide(name);
 									}}
@@ -164,8 +167,8 @@ function Window({ name }: { name: string }) {
 								<button
 									className='w-[28px] h-[20px] flex justify-center items-center border-[1px] border-theme-trim text-[0.7rem] leading-[0.7rem] font-bold shadow-btn bg-theme-primary active:bg-theme-highlight active:text-theme-text-highlight active:shadow-none'
 									ref={maximizeRef}
-									onMouseDown={(e) => e.stopPropagation()}
-									onMouseUp={() => maximizeRef.current!.blur()}
+									onPointerDown={(e) => e.stopPropagation()}
+									onPointerUp={() => maximizeRef.current!.blur()}
 									onClick={() => {
 										setSize({
 											width: displaySize.width,
@@ -182,8 +185,8 @@ function Window({ name }: { name: string }) {
 								<button
 									className='w-[28px] h-[20px] flex justify-center items-center border-[1px] border-theme-trim text-[0.7rem] leading-[0.7rem] shadow-btn bg-theme-primary active:bg-theme-highlight active:text-theme-text-highlight active:shadow-none'
 									ref={closeRef}
-									onMouseDown={(e) => e.stopPropagation()}
-									onMouseUp={() => closeRef.current!.blur()}
+									onPointerDown={(e) => e.stopPropagation()}
+									onPointerUp={() => closeRef.current!.blur()}
 									onClick={() => {
 										close(name);
 									}}
@@ -205,7 +208,7 @@ function Window({ name }: { name: string }) {
 					style={{
 						filter: 'brightness(1.2)'
 					}}
-					onMouseDown={(e) => {
+					onPointerDown={(e) => {
 						(e.target as HTMLDivElement).classList.remove('cursor-custom-grab');
 						(e.target as HTMLDivElement).classList.add('cursor-custom-grabbing');
 						let mouseDown = true;
@@ -213,12 +216,12 @@ function Window({ name }: { name: string }) {
 							x: e.clientX,
 							y: e.clientY
 						};
-						window.onmousemove = (e: MouseEvent) => {
+						window.onpointermove = (e: PointerEvent) => {
 							if (!mouseDown) return;
-							const newSize = resize(e, initClick, position, size);
+							const newSize: Size = resize(e, initClick, position, size);
 							setSize(newSize);
 						};
-						window.onmouseup = () => {
+						window.onpointerup = () => {
 							(e.target as HTMLDivElement).classList.remove('cursor-custom-grabbing');
 							(e.target as HTMLDivElement).classList.add('cursor-custom-grab');
 							mouseDown = false;

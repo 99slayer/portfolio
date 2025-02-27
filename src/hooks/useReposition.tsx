@@ -7,7 +7,7 @@ function useReposition() {
 	const { displaySize } = useContext(DisplayContext) as DisplayContextInterface;
 
 	const reposition = useCallback((
-		e: MouseEvent,
+		e: PointerEvent,
 		initialClick: Coordinates,
 		startPosition: Coordinates,
 		windowSize: Size
