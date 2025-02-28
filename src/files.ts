@@ -63,8 +63,6 @@ I enjoy games, movies, and reading.
 
 My favorite fruit is a tie between mango and pineapple.
 
-Driving around looking cool in my lambo is super fun.
-
 BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH BLAH`
 	}
 ];
