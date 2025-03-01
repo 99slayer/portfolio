@@ -25,9 +25,9 @@ export default {
 				}
 			},
 			cursor: {
-				'custom-default': 'url(./cursors/cursor-default-32.png) 1 3, default',
-				'custom-grab': 'url(./cursors/cursor-grab-32.png) 1 3, grab',
-				'custom-grabbing': 'url(./cursors/cursor-grabbing-32.png) 1 3, grabbing',
+				'custom-default': 'url(/cursors/cursor-default-32.png) 1 3, default',
+				'custom-grab': 'url(/cursors/cursor-grab-32.png) 1 3, grab',
+				'custom-grabbing': 'url(/cursors/cursor-grabbing-32.png) 1 3, grabbing',
 			}
 		},
 	},

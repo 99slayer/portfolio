@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 button, a { 
-	cursor: url('./cursors/cursor-default-32.png') 1 3, default;
+	cursor: url('/cursors/cursor-default-32.png') 1 3, default;
 }
 
 @layer base {
@@ -65,13 +65,13 @@ button, a {
 
 @font-face {
 	font-family: 'Geneva';
-	src: url('./fonts/Geneva.ttf') format('truetype');
+	src: url('/fonts/Geneva.ttf') format('truetype');
 }
 
 @font-face {
   font-family: 'Sysfont';
-  src: url('./fonts/sysfont.woff2') format('woff2'),
-  url('./fonts/sysfont.woff') format('woff');
+  src: url('/fonts/sysfont.woff2') format('woff2'),
+  url('/fonts/sysfont.woff') format('woff');
 }
 
 @layer components {
