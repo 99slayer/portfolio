@@ -24,8 +24,8 @@ function ImageModal({ appSize }: { appSize: Size }) {
 				className='border-[1px] border-theme-trim bg-theme-background'
 				style={{
 					imageRendering: 'auto',
-					maxWidth: appSize.width - 20,
-					maxHeight: appSize.height - 20
+					maxWidth: appSize.width - 60,
+					maxHeight: appSize.height - 60
 				}}
 				draggable={false}
 				ref={imgRef}

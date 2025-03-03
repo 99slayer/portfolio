@@ -26,15 +26,14 @@ Thanks for stopping by!  =)`
 			{ name: 'Project Demo', link: 'https://99slayer.github.io/pl-converter/' }
 		],
 		images: [
-			'./images/project-pl/pl-1.png',
-			'./images/project-pl/pl-2.png'
+			'./images/project-pl/pl-1.png'
 		]
 	},
 	{
 		name: 'Squawker',
 		iconName: 'squawker',
 		type: 'Project',
-		description: 'This project aims to replicate the core functionality of Twitter/X.',
+		description: 'Squawker was my final project for The Odin Project. It aims to replicate the core functionality of X/Twitter.',
 		links: [
 			{ name: 'Frontend Repo', link: 'https://github.com/99slayer/squawker-client' },
 			{ name: 'Backend Repo', link: 'https://github.com/99slayer/squawker-api' },
