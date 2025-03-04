@@ -1,5 +1,7 @@
 # Portfolio
 A place for people to view my work, and find out how to contact me.\
+Check it out here! 👉 [portfolio](https://99slayer.github.io/portfolio/)
+
 ![portfolio image 1](./public/README/portfolio-1.png)\
 ![portfolio image 2](./public/README/portfolio-2.png)
 
