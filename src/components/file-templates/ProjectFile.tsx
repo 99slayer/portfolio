@@ -95,7 +95,7 @@ function ProjectFile(
 						className='max-w-[4rem] max-h-[4rem] border-[1px] border-theme-trim object-contain'
 						src={hover ? `./gifs/${iconName}.gif` : `./icons/${iconName}.png`}
 						draggable='false'
-						alt='Spinning project icon.'
+						alt='Project icon.'
 					/>
 				</div>
 				<ul
