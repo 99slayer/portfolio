@@ -6,6 +6,19 @@ button, a {
 	cursor: url('/cursors/cursor-default-32.png') 1 3, default;
 }
 
+::-webkit-scrollbar {
+  max-width: 8px;
+}
+
+::-webkit-scrollbar-track {
+	border: 1px solid black;
+	background: var(--color-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-trim);
+}
+
 @layer base {
 	:root {
 		--color-text: black;
@@ -83,8 +96,7 @@ button, a {
 		font-weight: normal;
 		text-rendering: geometricPrecision;
 		touch-action: none;
-		
-		scrollbar-color: var(--color-primary) var(--color-trim);
+
 		-webkit-user-select: none; /* Safari */
 		-ms-user-select: none; /* IE 10 and IE 11 */
 		user-select: none; /* Standard syntax */

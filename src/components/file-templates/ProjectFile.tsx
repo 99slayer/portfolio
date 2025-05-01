@@ -84,7 +84,7 @@ function ProjectFile(
 		>
 			<div className='flex border-b-[1px] border-b-theme-trim'>
 				<div
-					className='p-1 relative border-r-[1px] border-r-theme-trim'
+					className='w-[4.5rem] h-[4.5rem] flex justify-center items-center relative border-r-[1px] border-r-theme-trim'
 					onPointerOver={() => setHover(true)}
 					onPointerLeave={() => setHover(false)}
 				>
@@ -92,7 +92,7 @@ function ProjectFile(
 						className='absolute top-1 left-1 bottom-1 right-1 bg-theme-primary opacity-20'
 					/>
 					<img
-						className='max-w-[4rem] max-h-[4rem] border-[1px] border-theme-trim object-contain'
+						className='min-w-[4rem] min-h-[4rem] max-w-[4rem] max-h-[4rem] border-[1px] border-theme-trim object-contain'
 						src={hover ? `./gifs/${iconName}.gif` : `./icons/${iconName}.png`}
 						draggable='false'
 						alt='Project icon.'
