@@ -33,6 +33,8 @@ function Window({ name }: { name: string }) {
 	const minimizeRef = useRef<HTMLButtonElement>(null);
 	const maximizeRef = useRef<HTMLButtonElement>(null);
 	const closeRef = useRef<HTMLButtonElement>(null);
+	const reposThrottleRef = useRef(Date.now());
+	const resizeThrottleRef = useRef(Date.now());
 	const [windowData, setWindowData] = useState<FileData | null>(null);
 	const minWidth: number = 320;
 	const minHeight: number = 320;
@@ -116,22 +118,26 @@ function Window({ name }: { name: string }) {
 							y: e.pageY
 						};
 						window.onpointermove = (e: PointerEvent) => {
-							if (!mouseDown) return;
-							if (size.width >= displaySize.width) {
-								const newSize: Size = {
-									width: Math.max(displaySize.width * 0.4, 320),
-									height: Math.max(displaySize.height * 0.5, 320)
-								};
-								const pos: Coordinates = { x: initClick.x, y: initClick.y };
-								const newPosition: Coordinates = reposition(e, initClick, pos, newSize);
-								setSize(newSize);
+							if (Date.now() - reposThrottleRef.current >= 50) {
+								if (!mouseDown) return;
+								if (size.width >= displaySize.width) {
+									const newSize: Size = {
+										width: Math.max(displaySize.width * 0.4, 320),
+										height: Math.max(displaySize.height * 0.5, 320)
+									};
+									const pos: Coordinates = { x: initClick.x, y: initClick.y };
+									const newPosition: Coordinates = reposition(e, initClick, pos, newSize);
+									setSize(newSize);
+									setPosition(newPosition);
+									return;
+								}
+								const newPosition: Coordinates = reposition(e, initClick, position, size);
 								setPosition(newPosition);
-								return;
+								reposThrottleRef.current = Date.now();
 							}
-							const newPosition: Coordinates = reposition(e, initClick, position, size);
-							setPosition(newPosition);
 						};
 						window.onpointerup = () => {
+							window.onpointermove = null;
 							const cursorElements = document.querySelectorAll('.rc');
 							cursorElements.forEach(el => el.classList.remove('cursor-custom-grabbing'));
 							mouseDown = false;
@@ -217,11 +223,15 @@ function Window({ name }: { name: string }) {
 							y: e.clientY
 						};
 						window.onpointermove = (e: PointerEvent) => {
-							if (!mouseDown) return;
-							const newSize: Size = resize(e, initClick, position, size);
-							setSize(newSize);
+							if (Date.now() - resizeThrottleRef.current >= 50) {
+								if (!mouseDown) return;
+								const newSize: Size = resize(e, initClick, position, size);
+								setSize(newSize);
+								resizeThrottleRef.current = Date.now();
+							}
 						};
 						window.onpointerup = () => {
+							window.onpointermove = null;
 							(e.target as HTMLDivElement).classList.remove('cursor-custom-grabbing');
 							(e.target as HTMLDivElement).classList.add('cursor-custom-grab');
 							mouseDown = false;
