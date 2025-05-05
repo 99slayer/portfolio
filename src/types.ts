@@ -44,9 +44,13 @@ export interface AppContextInterface {
 	img: string | null;
 	setImg: React.Dispatch<React.SetStateAction<string | null>>;
 	startOpen: boolean;
-	setStartOpen: React.Dispatch<React.SetStateAction<boolean>>;
+	cycleStartMenu: () => void;
+	startTabs: boolean;
 	themesOpen: boolean;
-	setThemesOpen: React.Dispatch<React.SetStateAction<boolean>>;
+	cycleThemeMenu: () => void;
+	themeTabs: boolean;
+	imgOpen: boolean;
+	setImgOpen: React.Dispatch<React.SetStateAction<boolean>>;
 	theme: string;
 	setTheme: React.Dispatch<React.SetStateAction<string>>;
 	openArr: string[];

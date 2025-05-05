@@ -9,10 +9,8 @@ import { AppContextInterface } from '../types';
 function Taskbar() {
 	const {
 		taskbarRef,
-		startOpen,
-		setStartOpen,
-		themesOpen,
-		setThemesOpen,
+		cycleStartMenu,
+		cycleThemeMenu,
 		openArr,
 		open,
 		visibleArr,
@@ -125,11 +123,11 @@ function Taskbar() {
 				className='flex-1 min-w-[100%] flex items-stretch overflow-hidden'
 				ref={taskbarRef}
 			>
-				<li className='bg-theme-secondary button-noise'>
+				<li className='bg-theme-secondary button-noise' id='start-li'>
 					<button
 						className={`size-5 flex justify-center items-center border-[2px] border-l-[0px] border-t-[0px] border-theme-trim ${startActive ? 'shadow-smooth-inset' : 'shadow-smooth-outset'} @[480px]:size-6`}
 						id='start-btn'
-						onClick={() => setStartOpen(!startOpen)}
+						onClick={() => cycleStartMenu()}
 						onPointerDown={() => {
 							setStartActive(true);
 							window.onpointerup = () => setStartActive(false);
@@ -138,23 +136,32 @@ function Taskbar() {
 						<svg
 							className='p-[7px]'
 							style={{
-								translate: `0px ${startActive ? '2px' : '0px'}`
+								translate: `0px ${startActive ? '2px' : '0px'}`,
+								pointerEvents: 'none'
 							}}
-							id='start-img'
 							viewBox="0 0 24 24"
 							xmlns="http://www.w3.org/2000/svg"
 						>
 							<path
 								d="m22 11h1v2h-1v1h-20v-1h-1v-2h1v-1h20z"
 								fill='var(--color-trim)'
+								style={{
+									pointerEvents: 'none'
+								}}
 							/>
 							<path
 								d="m22 19h1v2h-1v1h-20v-1h-1v-2h1v-1h20z"
 								fill='var(--color-trim)'
+								style={{
+									pointerEvents: 'none'
+								}}
 							/>
 							<path
 								d="m23 3v2h-1v1h-20v-1h-1v-2h1v-1h20v1z"
 								fill='var(--color-trim)'
+								style={{
+									pointerEvents: 'none'
+								}}
 							/>
 						</svg>
 					</button>
@@ -166,7 +173,7 @@ function Taskbar() {
 					<button
 						className={`size-5 flex justify-center items-center border-[2px] border-l-[0px] border-t-[0px] border-theme-trim ${themesActive ? 'shadow-smooth-inset' : 'shadow-smooth-outset'} @[480px]:size-6`}
 						id='themes-btn'
-						onClick={() => setThemesOpen(!themesOpen)}
+						onClick={() => cycleThemeMenu()}
 						onPointerDown={() => {
 							setThemesActive(true);
 							window.onpointerup = () => setThemesActive(false);

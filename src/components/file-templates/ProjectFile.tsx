@@ -11,7 +11,11 @@ function ProjectFile(
 		images: string[]
 	}
 ) {
-	const { imgModalRef, setImg } = useContext(AppContext) as AppContextInterface;
+	const {
+		imgModalRef,
+		setImg,
+		setImgOpen
+	} = useContext(AppContext) as AppContextInterface;
 	const [hover, setHover] = useState<boolean>(false);
 
 	function createLinks(arr: { name: string, link: string }[]) {
@@ -49,6 +53,7 @@ function ProjectFile(
 					key={arr[i]}
 					onClick={() => {
 						setImg(arr[i]);
+						setImgOpen(true);
 						setTimeout(() => {
 							imgModalRef.current!.showModal();
 						}, 50);

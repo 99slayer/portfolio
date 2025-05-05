@@ -1,9 +1,6 @@
 import {
-	useCallback,
 	useContext,
-	useEffect,
-	useRef,
-	useState
+	useRef
 } from 'react';
 import { AppContext } from '../context';
 import { AppContextInterface } from '../types';
@@ -12,45 +9,29 @@ import hook from '../hooks/hook';
 function StartMenu() {
 	const {
 		startOpen,
-		setStartOpen
+		cycleStartMenu,
+		startTabs
 	} = useContext(AppContext) as AppContextInterface;
 	const ref: React.RefObject<HTMLDivElement> = useRef<HTMLDivElement>(null);
-	const [open, setOpen] = useState<boolean>(false);
-	const [tabs, setTabs] = useState<boolean>(false);
-
-	const closeMenu = useCallback(() => {
-		setStartOpen(false);
-	}, [setStartOpen]);
 
 	hook.useDetectOutside(
+		startOpen,
 		ref,
-		closeMenu,
-		['start-btn', 'start-img']
+		cycleStartMenu,
+		['start-li', 'start-btn']
 	);
-
-	useEffect(() => {
-		if (startOpen) {
-			setOpen(true);
-			setTimeout(() => {
-				setTabs(true);
-			}, 201);
-		} else {
-			setTabs(false);
-			setTimeout(() => { setOpen(false); }, 300);
-		}
-	}, [startOpen]);
 
 	return (
 		<div
 			className='flex-col gap-1 absolute left-0 bottom-[1.85rem] text-lg leading-[1.125rem] z-50'
-			style={{ display: open ? 'flex' : 'none' }}
+			style={{ display: startOpen ? 'flex' : 'none' }}
 			ref={ref}
 		>
 
 			<button
-				className='flex justify-center items-center transition-transform'
+				className='flex justify-center items-center transition-transform delay-0'
 				style={{
-					transform: `translateX(${tabs ? '0' : '-100'}%)`
+					transform: `translateX(${startTabs ? '0' : '-100'}%)`
 				}}
 			>
 				<a
@@ -76,7 +57,7 @@ function StartMenu() {
 			<button
 				className='flex justify-center items-center transition-transform delay-100'
 				style={{
-					transform: `translateX(${tabs ? '0' : '-100'}%)`
+					transform: `translateX(${startTabs ? '0' : '-100'}%)`
 				}}
 			>
 				<a
@@ -101,7 +82,7 @@ function StartMenu() {
 			<button
 				className='flex justify-center items-center transition-transform delay-200'
 				style={{
-					transform: `translateX(${tabs ? '0' : '-100'}%)`
+					transform: `translateX(${startTabs ? '0' : '-100'}%)`
 				}}
 			>
 				<a

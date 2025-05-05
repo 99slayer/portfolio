@@ -22,9 +22,13 @@ function App() {
 	const taskbarRef = useRef<HTMLUListElement>(null);
 	const imgModalRef = useRef<HTMLDialogElement>(null);
 
-	const [img, setImg] = useState<string | null>(null);
 	const [startOpen, setStartOpen] = useState<boolean>(false);
+	const [startTabs, setStartTabs] = useState<boolean>(false);
 	const [themesOpen, setThemesOpen] = useState<boolean>(false);
+	const [themeTabs, setThemeTabs] = useState<boolean>(false);
+
+	const [img, setImg] = useState<string | null>(null);
+	const [imgOpen, setImgOpen] = useState<boolean>(false);
 	const [theme, setTheme] = useState<string>(themes[0].name);
 	const [openArr, setOpenArr] = useState<string[]>([]);
 	const [visibleArr, setVisibleArr] = useState<string[]>([]);
@@ -66,15 +70,52 @@ function App() {
 		}
 	};
 
+	const delay: number = 400;
+	const cycleStartMenu = () => {
+		if (startOpen) {
+			setStartTabs(false);
+			setTimeout(() => {
+				setStartOpen(false);
+				setStartTabs(false);
+			}, delay);
+		} else {
+			setStartOpen(true);
+			setTimeout(() => {
+				setStartTabs(true);
+				setStartOpen(true);
+			}, 10);
+		}
+	};
+
+	const cycleThemeMenu = () => {
+		if (themesOpen) {
+			setThemeTabs(false);
+			setTimeout(() => {
+				setThemesOpen(false);
+				setThemeTabs(false);
+			}, delay);
+		} else {
+			setThemesOpen(true);
+			setTimeout(() => {
+				setThemeTabs(true);
+				setThemesOpen(true);
+			}, 10);
+		}
+	};
+
 	const appContextValues = {
 		taskbarRef,
 		imgModalRef,
 		img,
 		setImg,
 		startOpen,
-		setStartOpen,
+		cycleStartMenu,
+		startTabs,
 		themesOpen,
-		setThemesOpen,
+		cycleThemeMenu,
+		themeTabs,
+		imgOpen,
+		setImgOpen,
 		theme,
 		setTheme,
 		openArr,

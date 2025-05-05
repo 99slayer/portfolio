@@ -1,13 +1,28 @@
-import { useContext, useRef } from 'react';
+import { useCallback, useContext, useRef } from 'react';
 import { AppContext } from '../context';
 import { AppContextInterface, Size } from '../types';
 import hook from '../hooks/hook';
 
 function ImageModal({ appSize }: { appSize: Size }) {
-	const { imgModalRef, img } = useContext(AppContext) as AppContextInterface;
+	const {
+		imgModalRef,
+		img,
+		imgOpen,
+		setImgOpen
+	} = useContext(AppContext) as AppContextInterface;
 	const imgRef = useRef<HTMLImageElement>(null);
 
-	hook.useDetectOutside(imgRef, () => { imgModalRef.current!.close(); }, []);
+	const closeModal = useCallback(() => {
+		imgModalRef.current!.close();
+		setImgOpen(false);
+	}, [imgModalRef, setImgOpen]);
+
+	hook.useDetectOutside(
+		imgOpen,
+		imgRef,
+		closeModal,
+		[]
+	);
 
 	return (
 		<dialog
@@ -16,7 +31,7 @@ function ImageModal({ appSize }: { appSize: Size }) {
 		>
 			<button
 				className='px-1 absolute top-1 right-1 bg-theme-background border-[1px] border-theme-trim shadow-btn text-theme-text active:shadow-btn-click focus:outline-none'
-				onClick={() => imgModalRef.current!.close()}
+				onClick={() => closeModal()}
 			>
 				X
 			</button>
