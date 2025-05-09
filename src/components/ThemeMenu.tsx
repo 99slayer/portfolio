@@ -24,7 +24,7 @@ function ThemeMenu() {
 	);
 
 	function createThemeButtons(arr: ThemeInterface[]) {
-		const buttons = [];
+		const buttons: JSX.Element[] = [];
 
 		for (let i = 0; i < arr.length; i++) {
 			const colorName = arr[i].name;
@@ -32,7 +32,7 @@ function ThemeMenu() {
 
 			buttons.push(
 				<button
-					className='flex-1 px-[0.1rem] flex border-[1px] bg-theme-primary hover:brightness-[1.1] transition-transform'
+					className='flex-1 px-[0.1rem] flex border-[2px] border-l-0 bg-theme-primary hover:brightness-[1.1] transition-transform'
 					style={{
 						backgroundImage: `linear-gradient(10deg, ${colors.primary} 50%, ${colors.secondary} 50%)`,
 						borderColor: colors.primary,

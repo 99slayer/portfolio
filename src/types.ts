@@ -20,6 +20,12 @@ export interface ThemeInterface {
 	};
 }
 
+export interface SocialInterface {
+	name: string;
+	link: string;
+	icon: JSX.Element;
+}
+
 interface ProjectFileData {
 	ref?: React.RefObject<HTMLDivElement>;
 	name: string;
