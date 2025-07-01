@@ -118,7 +118,7 @@ function Window({ name }: { name: string }) {
 							y: e.pageY
 						};
 						window.onpointermove = (e: PointerEvent) => {
-							if (Date.now() - reposThrottleRef.current >= 50) {
+							if (Date.now() - reposThrottleRef.current >= 30) {
 								if (!mouseDown) return;
 								if (size.width >= displaySize.width) {
 									const newSize: Size = {
