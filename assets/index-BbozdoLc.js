@@ -51,7 +51,7 @@ Thanks for stopping by!  =)`},{name:"Pig Latin Converter",iconName:"pl-converter
 
 I've had an affinity for computers my whole life, but my coding journey began only recently in 2022. Building up a set of skills and gaining a deeper understanding of what goes on behind the screen has been an extremely rewarding process. Having finished the Odin Project's curriculum I continue to expand my skills and work on my own projects while on the job hunt.
 
-I appreciate you stopping by and I hope you like what you see! Want to get in contact with me? You can find my email and links to my socials in the bottom left corner.
+Want to get in contact with me? You can find my email and links to my socials in the bottom left corner. I appreciate you stopping by and I hope you like what you see!
 
 SKILLS
 • HTML • CSS • JavaScript • Webpack • Git • ReactJS • NodeJS • ExpressJS • MongoDB • Mongoose • TypeScript • PowerShell • Tailwind •
